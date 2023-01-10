@@ -5,42 +5,45 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 
 
-public class CreatBullet
+namespace Bullet
 {
-    
-    public static CreatBullet BulletCreate{get;private set;} = new CreatBullet();
-
-    // トランプを打てるかフラグ
-    private bool shotFlag = true;
-
-    
-    // 弾の生成と移動向きを代入する関数
-    public async void Move(BaseEnemy tmpObj, BaseBullet tmpBulet)
+    public class CreatBullet
     {
-        if(shotFlag)
+        
+        public static CreatBullet BulletCreate{get;private set;} = new CreatBullet();
+
+        // トランプを打てるかフラグ
+        private bool shotFlag = true;
+
+        
+        // 弾の生成と移動向きを代入する関数
+        public async void Move(BaseEnemy tmpObj, BaseBullet tmpBulet)
         {
-            shotFlag = false;
-            // 生成
-            BaseBullet clone = FactoryBullet.objectPool.Launch(tmpObj.transform.position, FactoryBullet.objectPool.BulletList, tmpBulet);
+            if(shotFlag)
+            {
+                shotFlag = false;
+                // 生成
+                BaseBullet clone = InGameController.BulletObjectPool.Launch(tmpObj.transform.position, InGameController.BulletObjectPool.BulletList, tmpBulet);
 
-            // プレイヤーの座標
-            Vector3 targetPos = InGameController.Player.transform.position;
+                // プレイヤーの座標
+                Vector3 targetPos = InGameController.Player.transform.position;
 
-            // 向きの生成（Z成分の除去と正規化）
-            clone.ShotForward = Vector3.Scale((targetPos - tmpObj.transform.position), new Vector3(1, 1, 0)).normalized;
+                // 向きの生成（Z成分の除去と正規化）
+                clone.ShotForward = Vector3.Scale((targetPos - tmpObj.transform.position), new Vector3(1, 1, 0)).normalized;
 
-            // トランプの挙動
-            BulletMove.MoveBullet.Move(clone);
+                // トランプの挙動
+                BulletMove.MoveBullet.Move(clone);
 
-            await shotCoolTime(tmpBulet.BulletsData);
+                await shotCoolTime(tmpBulet.BulletsData);
+            }
         }
-    }
 
-    // nミリ秒後にshotフラグを初期化
-    private async UniTask shotCoolTime(BulletData bulletData)
-    {
-        await UniTask.Delay(bulletData.ShotTime * Const.CHANGE_SECOND);
+        // nミリ秒後にshotフラグを初期化
+        private async UniTask shotCoolTime(BulletData bulletData)
+        {
+            await UniTask.Delay(bulletData.ShotTime * Const.CHANGE_SECOND);
 
-        shotFlag = true;
+            shotFlag = true;
+        }
     }
 }

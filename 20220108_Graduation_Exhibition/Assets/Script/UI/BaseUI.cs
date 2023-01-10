@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UI;
 
 public class BaseUI : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class BaseUI : MonoBehaviour
     [SerializeField, Header("トランプUI")]
     protected Slider trumpSlider;
     public Slider TrumpSlider{get{return trumpSlider;}private set{trumpSlider = value;}}
-
     [SerializeField, Header("アイテムのUI")]
     protected Text itemsUI;
     public Text ItemsUI{get {return itemsUI;}private set{itemsUI = value;}}

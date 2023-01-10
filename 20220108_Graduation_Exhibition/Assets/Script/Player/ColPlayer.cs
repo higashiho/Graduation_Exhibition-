@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ColPlayer : MonoBehaviour
+
+namespace Player
 {
-    // UIcontroller
-    [SerializeField, Header("UI")]
-    private BaseUI uiObj;
-    // 当たり判定
-    private void OnCollisionEnter2D(Collision2D col) 
+    public class ColPlayer : MonoBehaviour
     {
-        if(col.gameObject.tag == "Bullet")
+        // UIcontroller
+        [SerializeField, Header("UI")]
+        private BaseUI uiObj;
+        // 当たり判定
+        private void OnCollisionEnter2D(Collision2D col) 
         {
-            SceneManager.LoadScene("ResultScene");
+            if(col.gameObject.tag == "Bullet")
+            {
+                SceneManager.LoadScene("ResultScene");
+            }
         }
-    }
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(other.gameObject.tag == "Item")
+        private void OnTriggerEnter2D(Collider2D other) 
         {
-            // 表示を消して取得数を増やす
-            other.gameObject.SetActive(false);
-            BaseUI.HaveItem++;
+            if(other.gameObject.tag == "Item")
+            {
+                // 表示を消して取得数を増やす
+                other.gameObject.SetActive(false);
+                BaseUI.HaveItem++;
+            }
         }
     }
 }

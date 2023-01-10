@@ -2,18 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSceneUIContoller : BaseUI
+namespace UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameSceneUIContoller : BaseUI
     {
-        ItemUI.Items.FindItems(this);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        TrumpUI.Trumps.Move(this);
-        ItemUI.Items.ItemCount(this);
+        // インスタンス化
+        private ItemUI itemUI = new ItemUI();
+        private TrumpUI trumpUI = new TrumpUI();
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            itemUI.FindItems(this);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            trumpUI.Move(this);
+            itemUI.ItemCount(this);
+        }
     }
 }

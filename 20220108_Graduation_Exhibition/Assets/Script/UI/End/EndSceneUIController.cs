@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndSceneUIController : BaseUI
-{
-    // Start is called before the first frame update
-    void Start()
+namespace UI{
+    public class EndSceneUIController : BaseUI
     {
-        ScoreUI.Scores.PrintScore(this);
-    }
+        // インスタンス化
+        private ScoreUI scores = new ScoreUI();
+        // Start is called before the first frame update
+        void Start()
+        {
+            scores.PrintScore(this);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
+        }
     }
 }

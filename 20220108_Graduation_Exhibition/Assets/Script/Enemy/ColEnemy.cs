@@ -2,32 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColEnemy : MonoBehaviour
+
+namespace Enemy
 {
-    [SerializeField]
-    private EnemyController enemy;
-    // 当たり判定
-    private void OnCollisionEnter2D(Collision2D col)
+    public class ColEnemy : MonoBehaviour
     {
-        if(col.gameObject.tag == "Wall")
+        [SerializeField]
+        private EnemyController enemy;
+        // 当たり判定
+        private void OnCollisionEnter2D(Collision2D col)
         {
-            // エネミーのムーブフラグを逆転
-            if(enemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.LEFT)
-                enemy.EnemyMoveFlags = BaseEnemy.EnemyMoveFlag.RIGHT;
-            else
-                enemy.EnemyMoveFlags = BaseEnemy.EnemyMoveFlag.LEFT;
+            if(col.gameObject.tag == "Wall")
+            {
+                // エネミーのムーブフラグを逆転
+                if(enemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.LEFT)
+                    enemy.EnemyMoveFlags = BaseEnemy.EnemyMoveFlag.RIGHT;
+                else
+                    enemy.EnemyMoveFlags = BaseEnemy.EnemyMoveFlag.LEFT;
+            }
         }
-    }
-    private void OnTriggerExit2D(Collider2D other) 
-    {
-        if(other.gameObject.tag == "Wall")
+        private void OnTriggerExit2D(Collider2D other) 
         {
-            // エネミーのムーブフラグを逆転
-            if(enemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.LEFT)
-                enemy.EnemyMoveFlags = BaseEnemy.EnemyMoveFlag.RIGHT;
-            else
-                enemy.EnemyMoveFlags = BaseEnemy.EnemyMoveFlag.LEFT;
+            if(other.gameObject.tag == "Wall")
+            {
+                // エネミーのムーブフラグを逆転
+                if(enemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.LEFT)
+                    enemy.EnemyMoveFlags = BaseEnemy.EnemyMoveFlag.RIGHT;
+                else
+                    enemy.EnemyMoveFlags = BaseEnemy.EnemyMoveFlag.LEFT;
+            }
         }
+        
     }
-    
 }
