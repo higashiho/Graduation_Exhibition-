@@ -25,6 +25,5 @@ public class InGameController : MonoBehaviour
         Player = GameObject.FindWithTag("Player").GetComponent<BasePlayer>();
         BulletObjectPool = GameObject.FindWithTag("Factory").GetComponent<FactoryBullet>();
         TrumpObjectPool = GameObject.FindWithTag("Factory").GetComponent<FactoryTrump>();
-        
     }
 }

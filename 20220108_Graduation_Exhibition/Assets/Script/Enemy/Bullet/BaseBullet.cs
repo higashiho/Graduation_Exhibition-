@@ -4,25 +4,28 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Threading;
 
-public class BaseBullet : MonoBehaviour
+namespace Bullet
 {
+    public class BaseBullet : MonoBehaviour
+    {
 
-    [Header("弾丸のデータ")]
-    [SerializeField]    
-    protected BulletData bulletData;
-    public BulletData BulletsData{get{return bulletData;}private set{bulletData = value;}}
-    public UnityAction<BaseBullet> objectPoolCallBack;
+        [Header("弾丸のデータ")]
+        [SerializeField]    
+        protected BulletData bulletData;
+        public BulletData BulletsData{get{return bulletData;}private set{bulletData = value;}}
+        public UnityAction<BaseBullet> objectPoolCallBack;
 
-    
-    // 移動向き
-    protected Vector3 shotForward;  
-    public Vector3 ShotForward{get{return shotForward;}set{shotForward = value;}}
-    
-    // 時間計測
-    protected float time;
-    public float TimeManage{get{return time;}set {time = value;}}
+        
+        // 移動向き
+        protected Vector3 shotForward;  
+        public Vector3 ShotForward{get{return shotForward;}set{shotForward = value;}}
+        
+        // 時間計測
+        protected float time;
+        public float TimeManage{get{return time;}set {time = value;}}
 
-    
-    // タスク管理用
-    public CancellationTokenSource cts{get;private set;} = new CancellationTokenSource();  
+        
+        // タスク管理用
+        public CancellationTokenSource cts{get;private set;} = new CancellationTokenSource();  
+    }
 }

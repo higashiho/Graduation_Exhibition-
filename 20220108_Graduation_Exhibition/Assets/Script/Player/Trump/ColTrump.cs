@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks; 
 using DG.Tweening;
+using Enemy;
+using Player;
 
 
 namespace Trump
@@ -61,11 +63,11 @@ namespace Trump
         private async UniTask changeMove(BaseEnemy tmpEnemy,Vector3 tmpEnemyPos, Vector3 tmpPlayerPos)
         {
             // (ChangeTimer)秒間かけて指定座標に移動
-            tmpEnemy.transform.DOMove(tmpPlayerPos, InGameController.Player.DataPlayer.ChangeTimer).OnComplete(() =>
+            tmpEnemy.transform.DOMove(tmpPlayerPos, InGameController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
             {
                 Debug.Log("OnComplete!");
             });
-            InGameController.Player.transform.DOMove(tmpEnemyPos, InGameController.Player.DataPlayer.ChangeTimer).OnComplete(() =>
+            InGameController.Player.transform.DOMove(tmpEnemyPos, InGameController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
             {
                 Debug.Log("OnComplete!");
             });
