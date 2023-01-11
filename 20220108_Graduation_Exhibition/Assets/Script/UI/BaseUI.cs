@@ -27,6 +27,11 @@ namespace UI
         protected GameObject[] items = new GameObject[4];
         public GameObject[] Items{get{return items;}set{items = value;}}
 
+        // 説明テキスト
+        [SerializeField, Header("説明テキスト")]
+        protected TextMeshProUGUI[] expText = new TextMeshProUGUI[2];
+        public TextMeshProUGUI[] ExpText{get{return expText;}private set{expText = value;}}
+
         [Header("Result")]
         [SerializeField, Header("スコアテキスト")]
         protected TextMeshProUGUI  scoreText;

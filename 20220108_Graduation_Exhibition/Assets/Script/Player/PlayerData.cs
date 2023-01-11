@@ -12,13 +12,13 @@ public class PlayerData : ScriptableObject
 
     // ジャンプ力
     [SerializeField, Header("ジャンプ力")]
-    private float playerJunpPower;
-    public float PlayerJunpPower{get{return playerJunpPower;}private set{playerJunpPower = value;}}
+    private float playerJumpPower;
+    public float PlayerJumpPower{get{return playerJumpPower;}private set{playerJumpPower = value;}}
 
     // ジャンプフラグ
     [SerializeField]
-    private bool junpFlag;
-    public bool JunpFlag{get {return junpFlag;}set {junpFlag = value;}} 
+    private bool jumpFlag;
+    public bool JumpFlag{get {return jumpFlag;}set {jumpFlag = value;}} 
 
 
     // ジャンプフラグを折るタイマー

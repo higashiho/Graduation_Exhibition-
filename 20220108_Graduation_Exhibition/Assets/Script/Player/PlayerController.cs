@@ -31,7 +31,7 @@ namespace Player
                     break;
                 // ジャンプ挙動
                 case PlayerState.JUMP:
-                    movePlayer.Junp(this, playerData);
+                    movePlayer.Jump(this, playerData);
                     break;
                 // 通常時
                 case PlayerState.DEFAULT:
@@ -45,9 +45,11 @@ namespace Player
             }
 
             // 移動中と座標変更時はトランプ生成できないように設定
-            if(playerStatus != PlayerState.MOVE || playerStatus != PlayerState.CHANGE)
-                // トランプ生成挙動
-                createTrump.Move(this, trump, InGameController.UI);
+            if(playerStatus == PlayerState.MOVE || playerStatus == PlayerState.CHANGE)
+                return;
+
+            // トランプ生成
+            createTrump.Move(this, trump, InGameController.UI);         
         }
 
     }

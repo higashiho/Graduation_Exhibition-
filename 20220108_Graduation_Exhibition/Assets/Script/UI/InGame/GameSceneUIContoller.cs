@@ -10,6 +10,7 @@ namespace UI
         // インスタンス化
         private ItemUI itemUI = new ItemUI();
         private TrumpUI trumpUI = new TrumpUI();
+        private ExplanationMove expMove = new ExplanationMove();
 
         // Start is called before the first frame update
         void Start()
@@ -22,6 +23,7 @@ namespace UI
         {
             trumpUI.Move(this);
             itemUI.ItemCount(this);
+            expMove.Move(this);
         }
     }
 }

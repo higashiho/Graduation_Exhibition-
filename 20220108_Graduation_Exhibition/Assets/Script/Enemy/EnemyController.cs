@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 namespace Enemy
 {
     public class EnemyController : BaseEnemy
@@ -14,7 +13,6 @@ namespace Enemy
         // Start is called before the first frame update
         void Start()
         {
-            
         }
 
         // Update is called once per frame
@@ -26,24 +24,28 @@ namespace Enemy
                 case EnemyState.MOVE:
                     moveEnemy.Move(this);
                     break;
+
                 // 攻撃挙動
                 case EnemyState.ATTACK:
                     attackEnemy.Attack(this, bullet);
+                    if(!targetRenderer.isVisible)
+                    // 画面外に出たらステート初期化
+                    moveEnemy.StatusReset(this);
+
                     break;
                 // プレイヤーとの座標変更時
                 case EnemyState.CHANGE:
                     moveEnemy.VelocityClear(this);
                     break;
+                    
                 default:
                     break;
             }
         }
         
         // 画面外に出た処理
-        private void OnBecameInvisible()
+        void OnBecameInvisible()
         {
-            // 画面外に出たらステート初期化
-            moveEnemy.StatusReset(this);
         }
     }
 }

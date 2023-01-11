@@ -777,3 +777,4 @@ MonoBehaviour:
   leftVision: {fileID: 1734682551}
   rightVision: {fileID: 1114550145}
   bullet: {fileID: 4388299103519208363, guid: 9e41a42b0d46e044a96ab47aa5359bc4, type: 3}
+  targetRenderer: {fileID: 3833672931168380792}

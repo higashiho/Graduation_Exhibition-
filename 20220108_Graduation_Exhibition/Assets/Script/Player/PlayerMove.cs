@@ -31,15 +31,15 @@ namespace Player
         
         // ジャンプ挙動
         // 第一引数：動かすオブジェクト　第二引数：オブジェクトのデータ
-        public async void Junp(BasePlayer obj, PlayerData playerData)
+        public async void Jump(BasePlayer obj, PlayerData playerData)
         {
             // フラグがたってない場合
-            if(!playerData.JunpFlag)
+            if(!playerData.JumpFlag)
             {
-                playerData.JunpFlag = true;
-                obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(0,playerData.PlayerJunpPower,0));
+                playerData.JumpFlag = true;
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(0,playerData.PlayerJumpPower,0));
                 // 1秒後にフラグを折る
-                await junpCoolTime(playerData);
+                await jumpCoolTime(playerData);
 
                 // ステート初期化
                 obj.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
@@ -47,10 +47,10 @@ namespace Player
         }
         
         // 一秒後にジャンプフラグを折る
-        private async UniTask junpCoolTime(PlayerData playerData)  
+        private async UniTask jumpCoolTime(PlayerData playerData)  
         {
             await UniTask.Delay(playerData.JunpFlagTimer * Const.CHANGE_SECOND);  
-            playerData.JunpFlag = false;
+            playerData.JumpFlag = false;
             Debug.Log("Unitask完了");  
         }
     }
