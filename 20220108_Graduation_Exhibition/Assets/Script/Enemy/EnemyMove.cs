@@ -45,9 +45,17 @@ namespace Enemy
             tmpEnemy.EnemysStatus = BaseEnemy.EnemyState.MOVE;
         }
 
-        // チェンジじに重力判定がある場合消す
+        // チェンジ時に重力判定がある場合消す
         public void VelocityClear(BaseEnemy tmpEnemy)
         {
+            
+            // 非アクティブ確認
+            if(tmpEnemy.LeftVision.activeSelf || tmpEnemy.RightVision.activeSelf)
+            {
+                // アクティブの場合非アクティブにする
+                tmpEnemy.LeftVision.SetActive(false);
+                tmpEnemy.RightVision.SetActive(false);
+            }
             tmpEnemy.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
     }
