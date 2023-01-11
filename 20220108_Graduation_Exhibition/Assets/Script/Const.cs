@@ -21,6 +21,9 @@ public class Const
     // エネミー用定数
     
 
+    // 説明テキスト表示用定数
+    public static readonly float[] EXPLANATION_DISPLAY_POS = {-4.0f,-1.0f,-8.0f,-2.0f};
+    public const float MAX_ALPHA = 1.0f;                // 透明度最大値
 
     // Debug用定数
     public const float MOUSE_POS_X = 10.0f;               // マウス座標の正規化

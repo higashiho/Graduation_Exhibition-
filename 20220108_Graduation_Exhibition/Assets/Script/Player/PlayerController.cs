@@ -31,7 +31,7 @@ namespace Player
                     break;
                 // ジャンプ挙動
                 case PlayerState.JUMP:
-                    movePlayer.Junp(this, playerData);
+                    movePlayer.Jump(this, playerData);
                     break;
                 // 通常時
                 case PlayerState.DEFAULT:
