@@ -41,6 +41,7 @@ namespace Enemy
         // ステータス初期化
         public void StatusReset(BaseEnemy tmpEnemy)
         {
+            Debug.Log("OutCamera");
             tmpEnemy.EnemysStatus = BaseEnemy.EnemyState.MOVE;
         }
 

@@ -50,5 +50,9 @@ namespace Enemy
         [SerializeField]
         protected BaseBullet bullet; 
 
+        [SerializeField]
+        protected SpriteRenderer targetRenderer;    // 判定したいオブジェクトのrendererへの参照
+
+
     }
 }

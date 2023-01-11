@@ -46,8 +46,11 @@ namespace Player
 
             // 移動中と座標変更時はトランプ生成できないように設定
             if(playerStatus != PlayerState.MOVE || playerStatus != PlayerState.CHANGE)
-                // トランプ生成挙動
-                createTrump.Move(this, trump, InGameController.UI);
+            // トランプ生成挙動
+            {
+                Debug.Log("stateInstanse");
+                createTrump.Move(this, trump, InGameController.UI);  
+            }               
         }
 
     }
