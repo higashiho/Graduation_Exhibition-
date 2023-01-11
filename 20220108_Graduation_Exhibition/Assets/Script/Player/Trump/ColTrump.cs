@@ -72,10 +72,12 @@ namespace Trump
                 Debug.Log("OnComplete!");
             });
 
-            // posが同じになるまで待つ
-            await UniTask.WaitWhile(() => InGameController.Player.transform.position.x != tmpEnemyPos.x);
+            // posがTMPENEMYの＋１～ー１の範囲内に行くまで止まる
+            await UniTask.WaitWhile(() => InGameController.Player.transform.position.x >= tmpEnemyPos.x + Const.TMPENEMY_POS_ADJUST || 
+                                            InGameController.Player.transform.position.x <= tmpEnemyPos.x - Const.TMPENEMY_POS_ADJUST);
         }
 
+        // ステート更新
         protected void changeState(BasePlayer.PlayerState tmpPlayerState , BaseEnemy.EnemyState tmpEnemyState, BaseEnemy tmpEnemy)
         {
             InGameController.Player.PlayerStatus = tmpPlayerState;

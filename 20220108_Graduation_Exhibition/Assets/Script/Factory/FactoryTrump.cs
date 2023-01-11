@@ -61,7 +61,6 @@ namespace Factory
         // 回収処理　第一引数：格納するList 第二引数：回収されるオブジェクト
         public static void Collect(BaseTrump obj)
         {
-            obj.TimeManage = 0;
             //ゲームオブジェクトを非表示
             obj?.gameObject.SetActive(false);
         }

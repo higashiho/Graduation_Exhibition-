@@ -15,6 +15,7 @@ public class Const
     public const int CHANGE_DELAY_SPEED = 1;            // 入れ替え時の遅延時間
     public const float GAME_CLEAR_POS_Y = 32.0f;        // ゲームクリア座標
     public const int START_GRAVITY_SCALE = 1;           // 初期重力量
+    public const float TMPENEMY_POS_ADJUST = 1;         // チェンジ座標目標地点調整用
     
 
     // エネミー用定数
