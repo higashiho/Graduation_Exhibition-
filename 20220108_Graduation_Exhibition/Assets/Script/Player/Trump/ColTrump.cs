@@ -62,19 +62,22 @@ namespace Trump
         // 移動処理
         private async UniTask changeMove(BaseEnemy tmpEnemy,Vector3 tmpEnemyPos, Vector3 tmpPlayerPos)
         {
+            
             // (ChangeTimer)秒間かけて指定座標に移動
             tmpEnemy.transform.DOMove(tmpPlayerPos, InGameController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
             {
                 Debug.Log("OnComplete!");
             });
-            InGameController.Player.transform.DOMove(tmpEnemyPos, InGameController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
+            var playerTween = InGameController.Player.transform.DOMove(tmpEnemyPos, InGameController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
             {
                 Debug.Log("OnComplete!");
             });
 
+            // PlayerのTweenが終わるまで待つ
+            await playerTween.AsyncWaitForCompletion();
             // posがTMPENEMYの＋１～ー１の範囲内に行くまで止まる
-            await UniTask.WaitWhile(() => InGameController.Player.transform.position.x >= tmpEnemyPos.x + Const.TMPENEMY_POS_ADJUST || 
-                                            InGameController.Player.transform.position.x <= tmpEnemyPos.x - Const.TMPENEMY_POS_ADJUST);
+            // await UniTask.WaitWhile(() => InGameController.Player.transform.position.x >= tmpEnemyPos.x + Const.TMPENEMY_POS_ADJUST || 
+            //                                InGameController.Player.transform.position.x <= tmpEnemyPos.x - Const.TMPENEMY_POS_ADJUST);
         }
 
         // ステート更新
