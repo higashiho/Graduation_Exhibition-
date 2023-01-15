@@ -21,6 +21,8 @@ public class Const
     
 
     // 以下エネミー用定数
+    public const float LIGHT_MOVE_TIME = 25f;            // ライトの移動間隔
+    public const int LIGHT_ACTIVE_RETUN_TIME = 10;       // ライトのActiveが戻る時間
     // 以上エネミー定数
 
     // 以下テキスト表用定数

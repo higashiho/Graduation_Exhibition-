@@ -24,10 +24,10 @@ namespace Bullet
             {
                 shotFlag = false;
                 // 生成
-                BaseBullet clone = InGameController.BulletObjectPool.Launch(tmpObj.transform.position, InGameController.BulletObjectPool.BulletList, tmpBulet);
+                BaseBullet clone = InGameSceneController.BulletObjectPool.Launch(tmpObj.transform.position, InGameSceneController.BulletObjectPool.BulletList, tmpBulet);
 
                 // プレイヤーの座標
-                Vector3 targetPos = InGameController.Player.transform.position;
+                Vector3 targetPos = InGameSceneController.Player.transform.position;
 
                 // 向きの生成（Z成分の除去と正規化）
                 clone.ShotForward = Vector3.Scale((targetPos - tmpObj.transform.position), new Vector3(1, 1, 0)).normalized;

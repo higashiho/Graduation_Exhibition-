@@ -10,7 +10,7 @@ public class CameraMove : BaseCamera
     public void Move(GameObject obj)
     {
         // プレイヤーの座標取得
-        var playerPos = InGameController.Player.gameObject.transform.position;
+        var playerPos = InGameSceneController.Player.gameObject.transform.position;
 
         // カメラを一定一以上に行かないように設定
         moveStop(ref playerPos);

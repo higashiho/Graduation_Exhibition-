@@ -49,7 +49,7 @@ namespace Player
                 return;
 
             // トランプ生成
-            createTrump.Move(this, trump, InGameController.UI);         
+            createTrump.Move(this, trump, InGameSceneController.UI);         
         }
 
     }

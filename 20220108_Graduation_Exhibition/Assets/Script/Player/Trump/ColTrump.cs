@@ -20,17 +20,17 @@ namespace Trump
             var tmpEnemy = col.gameObject.GetComponent<BaseEnemy>();
             // プレイヤーの座標とエネミーの座標を変更
             // プレイヤーの座標を一旦別変数に格納
-            var tmpPlayerPos = InGameController.Player.transform.position;
+            var tmpPlayerPos = InGameSceneController.Player.transform.position;
             var tmpEnemyPos = tmpEnemy.transform.position;
             
             // 当たり判定
-            var tmpPlayerCol = InGameController.Player.GetComponent<BoxCollider2D>();
+            var tmpPlayerCol = InGameSceneController.Player.GetComponent<BoxCollider2D>();
             // 親の当たり判定と子の当たり判定を取得
             var tmpEnemysCol = tmpEnemy.GetComponent<BoxCollider2D>();                      // 親の当たり判定
             var tmpEnemyCol = tmpEnemy.transform.GetChild(0).GetComponent<BoxCollider2D>(); // 子の当たり判定
 
             // 重力処理を取得
-            var tmpPlayerRb = InGameController.Player.GetComponent<Rigidbody2D>();
+            var tmpPlayerRb = InGameSceneController.Player.GetComponent<Rigidbody2D>();
             var tmpEnemyRb = tmpEnemy.GetComponent<Rigidbody2D>();
 
             
@@ -64,11 +64,11 @@ namespace Trump
         {
             
             // (ChangeTimer)秒間かけて指定座標に移動
-            tmpEnemy.transform.DOMove(tmpPlayerPos, InGameController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
+            tmpEnemy.transform.DOMove(tmpPlayerPos, InGameSceneController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
             {
                 Debug.Log("OnComplete!");
             });
-            var playerTween = InGameController.Player.transform.DOMove(tmpEnemyPos, InGameController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
+            var playerTween = InGameSceneController.Player.transform.DOMove(tmpEnemyPos, InGameSceneController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
             {
                 Debug.Log("OnComplete!");
             });
@@ -83,7 +83,7 @@ namespace Trump
         // ステート更新
         protected void changeState(BasePlayer.PlayerState tmpPlayerState , BaseEnemy.EnemyState tmpEnemyState, BaseEnemy tmpEnemy)
         {
-            InGameController.Player.PlayerStatus = tmpPlayerState;
+            InGameSceneController.Player.PlayerStatus = tmpPlayerState;
             tmpEnemy.EnemysStatus = tmpEnemyState;
         }
 

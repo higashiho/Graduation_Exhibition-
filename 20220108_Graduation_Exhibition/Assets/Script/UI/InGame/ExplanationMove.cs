@@ -13,10 +13,10 @@ namespace UI
         {
             var tmpColorBool = false;
             // Playerが指定のposにいる場合徐々に表示
-            if(InGameController.Player.transform.position.y >= Const.EXPLANATION_DISPLAY_POS[0] &&
-                InGameController.Player.transform.position.y <= Const.EXPLANATION_DISPLAY_POS[1] &&
-                InGameController.Player.transform.position.x >= Const.EXPLANATION_DISPLAY_POS[2] &&
-                InGameController.Player.transform.position.x <= Const.EXPLANATION_DISPLAY_POS[3])
+            if(InGameSceneController.Player.transform.position.y >= Const.EXPLANATION_DISPLAY_POS[0] &&
+                InGameSceneController.Player.transform.position.y <= Const.EXPLANATION_DISPLAY_POS[1] &&
+                InGameSceneController.Player.transform.position.x >= Const.EXPLANATION_DISPLAY_POS[2] &&
+                InGameSceneController.Player.transform.position.x <= Const.EXPLANATION_DISPLAY_POS[3])
             {
                 Debug.Log("in");
                 // 透明度が最大値ではない場合

@@ -14,15 +14,15 @@ namespace Trump
         // 弾の生成と移動向きを代入する関数
         public async void Move(BasePlayer tmpObj, BaseTrump tmpTrump, BaseUI tmpUI)
         {
-            if(Input.GetMouseButtonDown(0) && InGameController.Player.ShotFlag)
+            if(Input.GetMouseButtonDown(0) && InGameSceneController.Player.ShotFlag)
             {
-                InGameController.Player.ShotFlag = false;
+                InGameSceneController.Player.ShotFlag = false;
                 
                 // トランプのスライダーを初期化
                 tmpUI.TrumpSlider.value = tmpUI.TrumpSlider.maxValue;
 
                 // 生成
-                BaseTrump clone = InGameController.TrumpObjectPool.Launch(tmpObj.transform.position, InGameController.TrumpObjectPool.BulletList, tmpTrump);
+                BaseTrump clone = InGameSceneController.TrumpObjectPool.Launch(tmpObj.transform.position, InGameSceneController.TrumpObjectPool.BulletList, tmpTrump);
 
                 // クリックした座標の取得（スクリーン座標からワールド座標に変換）
                 Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -42,7 +42,7 @@ namespace Trump
         {
             await UniTask.Delay(trumpData.ShotTime * Const.CHANGE_SECOND);
 
-            InGameController.Player.ShotFlag = true;
+            InGameSceneController.Player.ShotFlag = true;
         }
     }
 }

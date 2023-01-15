@@ -11,7 +11,7 @@ namespace UI
         public void Move(BaseUI tmpUI)
         {
             // プレイヤーがトランプを打ったら再生
-            if(!InGameController.Player.ShotFlag)
+            if(!InGameSceneController.Player.ShotFlag)
             {
                 sliderMove(tmpUI);
             }
