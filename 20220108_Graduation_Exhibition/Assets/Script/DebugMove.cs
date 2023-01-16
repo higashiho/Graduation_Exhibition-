@@ -16,9 +16,15 @@ public class DebugMove : MonoBehaviour
     void Update()
     {
         movePlayer();
+        warpCountUp();
     }
 
-
+    // ワープ回数増加
+    private void warpCountUp()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+            InGameSceneController.Player.WarpCount++;
+    }
 
     // Player座標移動
     private void movePlayer()

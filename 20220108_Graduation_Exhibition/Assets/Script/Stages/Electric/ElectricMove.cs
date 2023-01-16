@@ -56,6 +56,10 @@ namespace Electric
         /// <returns></returns>
         public async void ElectricManage(BaseElectric tmpElectric)
         {
+            
+            // padding更新
+            paddingUpdate(tmpElectric);
+            
             // ワープ回数が最大値と同じになった場合
             if(tmpElectric.ElectricsData.MaxElectric == InGameSceneController.Player.WarpCount && tmpElectric.MainLight.enabled)
             {
@@ -63,6 +67,26 @@ namespace Electric
                 tmpElectric.MainLight.enabled = false;
                 await electricCharge(tmpElectric);
                 InGameSceneController.Player.WarpCount = 0;
+                tmpElectric.MainLight.enabled = true;
+            }
+
+        }
+
+        /// <summary>
+        /// paddingを更新する変数
+        /// </summary>
+        /// <param name="tmpElectric"></param>
+        private void paddingUpdate(BaseElectric tmpElectric)
+        {
+            if(InGameSceneController.Player.WarpCount != 0 && tmpElectric.MainLight.enabled)
+            {
+                // マスクのpaddingを格納してTopの値を最大値にする
+                var tmpPadding = tmpElectric.ElectricUI[tmpElectric.ElectricsData.MaxElectric - InGameSceneController.Player.WarpCount].padding;
+                if(tmpPadding.w != Const.PADDING_TOP_MAX)
+                {
+                    tmpPadding.w = Const.PADDING_TOP_MAX;
+                    tmpElectric.ElectricUI[tmpElectric.ElectricsData.MaxElectric - InGameSceneController.Player.WarpCount].padding = tmpPadding; 
+                }
             }
         }
 
@@ -73,36 +97,21 @@ namespace Electric
         /// <returns></returns>
         private async UniTask electricCharge(BaseElectric tmpElectric)
         {
-            Tween tmpTween = null;
+            var tmpPadding = new Vector4(0, 0, 0, 0);
 
-            tweenMove(tmpTween, tmpElectric);
-
-            await UniTask.WaitWhile(() => tmpTween != null);
-            await tmpTween.AsyncWaitForCompletion();
-        }
-
-        /// <summary>
-        /// 電力を戻すTween関数
-        /// </summary>
-        /// <param name="tmpTween"></param> 全ての処理が終わったフラグを立てるTween格納用
-        /// <param name="tmpElectric"></param>　電力クラスの実体
-        private async void tweenMove(Tween tmpTween, BaseElectric tmpElectric)
-        {
-            // UIの子供のスプライトマスクを移動
-            var tmpElectricTweem = tmpElectric.ElectricUI[0].transform.GetChild(0).transform.DOMove(
-                tmpElectric.ElectricUIPos[0],
-                3f
-            ).SetEase(Ease.Linear);
-            await tmpElectricTweem.AsyncWaitForCompletion();
-            tmpElectricTweem = tmpElectric.ElectricUI[1].transform.GetChild(0).transform.DOMove(
-                tmpElectric.ElectricUIPos[1],
-                3f
-            ).SetEase(Ease.Linear);
-            await tmpElectricTweem.AsyncWaitForCompletion();
-            tmpTween = tmpElectric.ElectricUI[2].transform.GetChild(0).transform.DOMove(
-                tmpElectric.ElectricUIPos[2],
-                3f
-            ).SetEase(Ease.Linear);
+            // PaddingのTopを変更
+            for(int i = 0; i < tmpElectric.ElectricUI.Length; i++)
+            {
+                tmpPadding = tmpElectric.ElectricUI[i].padding;
+                // 0.01秒おきに1ずつ減らす
+                for(int j = 0; j < Const.CHANGE_ELECTRIC_TIME; j++)
+                {
+                    // Topの値を少しずつ減らす
+                    tmpPadding.w -= Const.PADDING_UP_NAM;
+                    tmpElectric.ElectricUI[i].padding = tmpPadding;
+                    await UniTask.Delay(Const.ELECTRIC_WAIT_TIME);
+                }
+            }
         }
     }
 }

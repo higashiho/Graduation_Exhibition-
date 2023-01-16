@@ -48,6 +48,7 @@ namespace Player
         public bool ShotFlag{get{return shotFlag;}set{shotFlag = value;}}
 
         // ワープ回数カウント
+        [SerializeField]
         protected int warpCount = 0;
         public int WarpCount{get{return warpCount;}set{warpCount = value;}}
 

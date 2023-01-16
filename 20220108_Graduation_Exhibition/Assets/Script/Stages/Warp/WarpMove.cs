@@ -29,6 +29,8 @@ namespace Warp
                 {
                     // プレイヤーのステート更新
                     InGameSceneController.Player.PlayerStatus = BasePlayer.PlayerState.WARP;
+                    // ワープ回数増加
+                    InGameSceneController.Player.WarpCount++;
                     // 当たり判定を削除
                     var tmpCol = InGameSceneController.Player.GetComponent<BoxCollider2D>();
                     var tmpRb = InGameSceneController.Player.GetComponent<Rigidbody2D>();
@@ -46,41 +48,19 @@ namespace Warp
                         
                         // スタートメカの場合は格納してたワープポジションに移動
                         case "StartWarpMecha":
-                            InGameSceneController.Player.PlauerMask.enabled = true;
-                            InGameSceneController.Player.PlauerMask.transform.DOMove(
-                                InGameSceneController.Player.transform.position,
-                                Const.WARP_TIME
-                            ).SetEase(Ease.Linear).OnComplete(() => 
-                            {
-                                playerMove(tmpMaskPos, InGameSceneController.Player.WarpPos);
-                            });
+                            startWarpMove(tmpMaskPos, InGameSceneController.Player.WarpPos);
                             
                             Debug.Log("out");
                             break;
                         // 通常の場合はスタートメカの位置に移動
                         case "WarpMecha":
                             Debug.Log("in");
-
-                            InGameSceneController.Player.PlauerMask.enabled = true;
-                            InGameSceneController.Player.PlauerMask.transform.DOMove(
-                                InGameSceneController.Player.transform.position,
-                                Const.WARP_TIME
-                            ).SetEase(Ease.Linear).OnComplete(() => 
-                            {
-                                playerMove(tmpMaskPos, InGameSceneController.Player.StartWarpMecha.transform.position);
-                            });
+                            startWarpMove(tmpMaskPos, InGameSceneController.Player.StartWarpMecha.transform.position);
                             break;
                         default:
                             break;
                     }
-                    
-                    foreach(var tmpEnemy in InGameSceneController.Enemys)
-                    {
-                        // エネミーが入っていない場合
-                        if(!tmpEnemy)
-                            break;
-                        tmpEnemy.transform.position = tmpEnemy.StartPos;
-                    }
+                    enemysMove();
                     
                     // nullの場合は待つ
                     await UniTask.WaitWhile(() => tmpPlayerTween == null);
@@ -92,6 +72,38 @@ namespace Warp
                     Debug.Log("座標変更完了");
                 }
             }
+        }
+        
+        /// <summary>
+        ///  エネミーの座標変換
+        /// </summary>
+        private void enemysMove()
+        {
+
+            foreach(var tmpEnemy in InGameSceneController.Enemys)
+            {
+                // エネミーが入っていない場合
+                if(!tmpEnemy)
+                    break;
+                tmpEnemy.transform.position = tmpEnemy.StartPos;
+            }
+        }
+        
+        /// <summary>
+        /// ワープ時最初のマスク移動
+        /// </summary>
+        /// <param name="tmpMaskPos"></param>マスクの元座標
+        /// <param name="tmpTargetPos"></param>プレイヤーの目標座標
+        private void startWarpMove(Vector3 tmpMaskPos, Vector3 tmpTargetPos)
+        {
+            InGameSceneController.Player.PlauerMask.enabled = true;
+            InGameSceneController.Player.PlauerMask.transform.DOMove(
+                InGameSceneController.Player.transform.position,
+                Const.WARP_TIME
+            ).SetEase(Ease.Linear).OnComplete(() => 
+            {
+                playerMove(tmpMaskPos, tmpTargetPos);
+            });
         }
 
         /// <summary>

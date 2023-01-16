@@ -10,7 +10,10 @@ public class Const
     // 以上カメラ用定数
 
     // 以下ステージ用定数
-    public const float CHANGE_ELECTRIC_TIME = 3.0f;     // 電力回復時間（３＊３）秒
+    public const float CHANGE_ELECTRIC_TIME = 500.0f;           // 電力回復時間(1/3なので合計15秒)
+    public const float PADDING_UP_NAM = 0.2f;                   // 一回転で減るPaddingの値
+    public const int ELECTRIC_WAIT_TIME = 10;                   // 回復時の遅延時間（0.01秒）
+    public const float PADDING_TOP_MAX = 100.0f;                // padding最大値
     // 以上ステージ用定数
 
     // 以下player用定数

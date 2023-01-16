@@ -20,14 +20,9 @@ namespace Electric
          protected Light2D cameraLight;
         public Light2D CameraLight{get{return cameraLight;}private set{cameraLight = value;}}
 
-        
-        [SerializeField, Header("電力のUI")]
-        protected Image[] electricUI = new Image[3];
-        public Image[] ElectricUI{get{return electricUI;} private set{electricUI = value;}}
-
-        [SerializeField, Header("UIマスクの初期座標")]
-        protected Vector3[] electricUIPos = new Vector3[3];
-        public Vector3[] ElectricUIPos{get{return electricUIPos;} private set{electricUIPos = value;}}
+        [SerializeField, Header("UIマスク")]
+        protected RectMask2D[] electricUI = new RectMask2D[3];
+        public RectMask2D[] ElectricUI{get{return electricUI;} private set{electricUI = value;}}
 
 
         // インスタンス化
