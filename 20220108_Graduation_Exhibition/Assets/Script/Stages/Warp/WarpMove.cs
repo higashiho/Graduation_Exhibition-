@@ -29,10 +29,16 @@ namespace Warp
                 {
                     // プレイヤーのステート更新
                     InGameSceneController.Player.PlayerStatus = BasePlayer.PlayerState.WARP;
+                    // 当たり判定を削除
+                    var tmpCol = InGameSceneController.Player.GetComponent<BoxCollider2D>();
+                    var tmpRb = InGameSceneController.Player.GetComponent<Rigidbody2D>();
 
+                    tmpCol.enabled = false;
+                    tmpRb.gravityScale = 0;
 
                     // マスクの元座標取得
-                    var tmpMaskPos = InGameSceneController.Player.PlauerMask.transform.position;
+                    var tmpMaskPos = 
+                    InGameSceneController.Player.PlauerMask.transform.position - InGameSceneController.Player.transform.position;
 
                     // プレイヤーの座標をワープ座標に変更して、エネミーの座標を初期化
                     switch(tmpWarp.gameObject.name)
@@ -43,7 +49,7 @@ namespace Warp
                             InGameSceneController.Player.PlauerMask.enabled = true;
                             InGameSceneController.Player.PlauerMask.transform.DOMove(
                                 InGameSceneController.Player.transform.position,
-                                1.5f
+                                Const.WARP_TIME
                             ).SetEase(Ease.Linear).OnComplete(() => 
                             {
                                 playerMove(tmpMaskPos, InGameSceneController.Player.WarpPos);
@@ -58,7 +64,7 @@ namespace Warp
                             InGameSceneController.Player.PlauerMask.enabled = true;
                             InGameSceneController.Player.PlauerMask.transform.DOMove(
                                 InGameSceneController.Player.transform.position,
-                                1.5f
+                                Const.WARP_TIME
                             ).SetEase(Ease.Linear).OnComplete(() => 
                             {
                                 playerMove(tmpMaskPos, InGameSceneController.Player.StartWarpMecha.transform.position);
@@ -76,9 +82,13 @@ namespace Warp
                         tmpEnemy.transform.position = tmpEnemy.StartPos;
                     }
                     
+                    // nullの場合は待つ
+                    await UniTask.WaitWhile(() => tmpPlayerTween == null);
                     // 移動が完了するまで待つ
                     await tmpPlayerTween.AsyncWaitForCompletion();
-                    InGameSceneController.Player.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
+                    tmpCol.enabled = true;
+                    tmpRb.gravityScale = Const.START_GRAVITY_SCALE;
+                    tmpPlayerTween = null;
                     Debug.Log("座標変更完了");
                 }
             }
@@ -93,7 +103,7 @@ namespace Warp
         {
             InGameSceneController.Player.transform.DOMove(
                 tmpTargetPos,
-                1.5f
+                Const.WARP_TIME
             ).SetEase(Ease.Linear).OnComplete(() =>
             {
                 moveComp(tmpMaskPos);
@@ -107,11 +117,12 @@ namespace Warp
         private void moveComp(Vector3 tmpPos)
         {
              tmpPlayerTween = InGameSceneController.Player.PlauerMask.transform.DOMove(
-                    tmpPos,
+                    InGameSceneController.Player.transform.position + tmpPos,
                     1.5f
                 ).SetEase(Ease.Linear).OnComplete(() => 
                 {
                     InGameSceneController.Player.PlauerMask.enabled = false;
+                    InGameSceneController.Player.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
                 });
         }
     }

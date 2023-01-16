@@ -9,14 +9,14 @@ public class Const
     public const float CAMERA_MOVE_MAX_Y = 27.0f;        // カメラが移動できる最大y座標
     // 以上カメラ用定数
 
-
+    // 以下ステージ用定数
+    public const float CHANGE_ELECTRIC_TIME = 3.0f;     // 電力回復時間（３＊３）秒
+    // 以上ステージ用定数
 
     // 以下player用定数
-    public const float CHANGE_SPEED = 10.0f;            // 敵との入れ替え時スピード
-    public const int CHANGE_DELAY_SPEED = 1;            // 入れ替え時の遅延時間
     public const float GAME_CLEAR_POS_Y = 32.0f;        // ゲームクリア座標
     public const int START_GRAVITY_SCALE = 1;           // 初期重力量
-    public const float TMPENEMY_POS_ADJUST = 1;         // チェンジ座標目標地点調整用
+    public const float WARP_TIME = 1.5f;                // ワープの一動作ごとの間隔
     // 以上player用定数
     
 

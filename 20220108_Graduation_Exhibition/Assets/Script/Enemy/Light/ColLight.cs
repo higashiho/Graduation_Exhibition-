@@ -16,9 +16,9 @@ namespace EnemyLight
             if(other.gameObject.tag == "Player" && InGameSceneController.Player.PlayerStatus != BasePlayer.PlayerState.WARP)
             {
                 // 自身を消してエネミーの配列のどれかを呼び出す
-                var tmpNum = UnityEngine.Random.Range(0, enemyLight.Enemys.Length);
+                var tmpNum = UnityEngine.Random.Range(0, InGameSceneController.Enemys.Length);
 
-                enemyLight.Enemys[tmpNum].transform.position =  this.gameObject.transform.position;
+                InGameSceneController.Enemys[tmpNum].transform.position =  this.gameObject.transform.position;
                 this.gameObject.SetActive(false);
             }
         }

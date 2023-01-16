@@ -61,7 +61,7 @@ namespace Enemy
 
         public int distanse(BaseEnemy tmpEnemy)
         {
-            float tmpPlayerToEnemyDis = InGameController.Player.transform.position.x - tmpEnemy.transform.position.x;
+            float tmpPlayerToEnemyDis = InGameSceneController.Player.transform.position.x - tmpEnemy.transform.position.x;
             int playerToEnemyDis = (int)tmpPlayerToEnemyDis;
             return playerToEnemyDis;
         }

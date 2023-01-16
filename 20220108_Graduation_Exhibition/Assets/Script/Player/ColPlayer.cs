@@ -16,7 +16,7 @@ namespace Player
         // 当たり判定
         private void OnCollisionEnter2D(Collision2D col) 
         {
-            if(col.gameObject.tag == "Bullet")
+            if(col.gameObject.tag == "Bullet" && player.PlayerStatus != BasePlayer.PlayerState.WARP)
             {
                 SceneManager.LoadScene("ResultScene");
             }

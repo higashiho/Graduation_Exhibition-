@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Bullet;
+using UnityEngine.Rendering.Universal;
 
 
 namespace Enemy
@@ -54,10 +55,16 @@ namespace Enemy
         protected SimpleAnimation policeAnm;
         public SimpleAnimation PoliceAnm{get{return policeAnm;}private set{policeAnm = value;}}
         
+        [SerializeField, Header("自身のライト")]
+        protected Light2D myLight;
+        public Light2D MyLight{get{return myLight;}protected set{myLight = value;}}
 
         [Header("攻撃弾")]
         [SerializeField]
         protected BaseBullet bullet; 
+
+        [SerializeField]
+        protected SpriteRenderer targetRenderer;    // 判定したいオブジェクトのrendererへの参照
 
         //スクリプト参照
         public EnemyMove MoveEnemy{get; private set;} = new EnemyMove();

@@ -18,7 +18,6 @@ namespace Player
         void Start()
         {
             movePlayer = new PlayerMove(InGameSceneController.Player);
-            
         }
 
         // Update is called once per frame
