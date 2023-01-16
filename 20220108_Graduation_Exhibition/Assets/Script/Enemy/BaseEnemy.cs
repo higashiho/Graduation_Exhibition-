@@ -51,17 +51,16 @@ namespace Enemy
 
         [Header("アニメーション管理")]
         [SerializeField]
-        protected SimpleAnimation policeLeftMoveAnm;
-        public SimpleAnimation PoliceLeftMoveAnm{get{return policeLeftMoveAnm;}private set{policeLeftMoveAnm = value;}}
+        protected SimpleAnimation policeAnm;
+        public SimpleAnimation PoliceAnm{get{return policeAnm;}private set{policeAnm = value;}}
         
 
         [Header("攻撃弾")]
         [SerializeField]
         protected BaseBullet bullet; 
 
-        [SerializeField]
-        protected SpriteRenderer targetRenderer;    // 判定したいオブジェクトのrendererへの参照
-
+        //スクリプト参照
+        public EnemyMove MoveEnemy{get; private set;} = new EnemyMove();
 
     }
 }

@@ -58,5 +58,12 @@ namespace Enemy
             }
             tmpEnemy.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
+
+        public int distanse(BaseEnemy tmpEnemy)
+        {
+            float tmpPlayerToEnemyDis = InGameController.Player.transform.position.x - tmpEnemy.transform.position.x;
+            int playerToEnemyDis = (int)tmpPlayerToEnemyDis;
+            return playerToEnemyDis;
+        }
     }
-}
+} 

@@ -653,6 +653,12 @@ MonoBehaviour:
   - clip: {fileID: 7400000, guid: c915688b11f60994b993bfec821158a9, type: 2}
     name: LeftMove
     defaultState: 0
+  - clip: {fileID: 7400000, guid: a62d3e68ee7736e4989771ccaeccc4b9, type: 2}
+    name: RightAttack
+    defaultState: 0
+  - clip: {fileID: 7400000, guid: cc6a8553495381e42aeaf51eda08a2a6, type: 2}
+    name: LeftAttack
+    defaultState: 0
 --- !u!1 &3213448024606909313
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +828,6 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 2a1f466230ae468448f693aa0be4a029, type: 2}
   leftVision: {fileID: 1734682551}
   rightVision: {fileID: 1114550145}
-  policeLeftMoveAnm: {fileID: 1341039784}
+  policeAnm: {fileID: 1341039784}
   bullet: {fileID: 4388299103519208363, guid: 9e41a42b0d46e044a96ab47aa5359bc4, type: 3}
   targetRenderer: {fileID: 3833672931168380792}
