@@ -4,6 +4,7 @@ using UnityEngine;
 using Factory;
 using Player;
 using UI;
+using Enemy;
 using EnemyLight;
 using DG.Tweening;
 
@@ -18,8 +19,8 @@ public class InGameSceneController : MonoBehaviour
 
     // エネミー関係
     public static BaseLight enemyLight{get;private set;}
-
-
+    private GameObject[] enemys = new GameObject[20];
+    public static BaseEnemy[] Enemys = new BaseEnemy[20];
     
     // obujectPool
     public static FactoryBullet BulletObjectPool{get;private set;}
@@ -32,6 +33,12 @@ public class InGameSceneController : MonoBehaviour
         Player = GameObject.FindWithTag("Player").GetComponent<BasePlayer>();
         BulletObjectPool = GameObject.FindWithTag("Factory").GetComponent<FactoryBullet>();
         TrumpObjectPool = GameObject.FindWithTag("Factory").GetComponent<FactoryTrump>();
+        enemys = GameObject.FindGameObjectsWithTag("Enemy");
+
+        for(int i = 0; i < enemys.Length; i++)
+        {
+            Enemys[i] = enemys[i].GetComponent<BaseEnemy>();
+        }
     }
 
 

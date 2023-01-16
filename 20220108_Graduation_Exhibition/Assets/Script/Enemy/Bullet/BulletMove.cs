@@ -19,9 +19,9 @@ namespace Bullet
         }
 
         // 指定秒後にキャンセルが要求されていなければプールに格納
-        public async UniTask Callback(BaseBullet tmpObj, BulletData bulletData, CancellationToken token)
+        public async UniTask Callback(BaseBullet tmpObj, CancellationToken token)
         {
-            await UniTask.Delay(bulletData.DeleteTime * Const.CHANGE_SECOND);
+            await UniTask.Delay(tmpObj.BulletsData.DeleteTime * Const.CHANGE_SECOND);
 
             // キャンセルが要求されている場合
             if ( token.IsCancellationRequested )

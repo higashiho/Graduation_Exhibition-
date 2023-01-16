@@ -7,16 +7,18 @@ namespace Vision
 {
     public class VisionMove
     {
-
-        public void Move(BaseVision tmpVision, BaseEnemy tmpEnemy)
+        // 挙動
+        public void Move(BaseVision tmpVision)
         {
-            tmpVision.transform.position = tmpEnemy.transform.position + tmpVision.Offset;
+            // 親の座標とオフセットを合わせる
+            tmpVision.transform.position = tmpVision.transform.parent.transform.position + tmpVision.Offset;
         }
 
         // オフセット初期化
-        public void StartOffset(BaseVision tmpVision, BaseEnemy tmpEnemy)
+        public void StartOffset(BaseVision tmpVision)
         {
-            tmpVision.Offset = tmpVision.transform.position - tmpEnemy.transform.position;
+            // 自分の座標から親の座標を引いてオフセットに代入
+            tmpVision.Offset = tmpVision.transform.position - tmpVision.transform.parent.transform.position;
         }
     }
 }

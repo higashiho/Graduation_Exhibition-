@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using UnityEngine.Rendering.Universal;
+
 
 namespace EnemyLight
 {
@@ -15,9 +17,10 @@ namespace EnemyLight
         protected Vector3[] itemsPos = new Vector3[4];
         public Vector3[] ItemsPos{get{return itemsPos;}set{itemsPos = value;}}
 
-        [SerializeField,Header("エネミー")]
-        protected GameObject[] enemys;
-        public GameObject[] Enemys{get{return enemys;}set{enemys = value;}}
+        
+        [SerializeField, Header("自身のライト")]
+        protected Light2D myLight;
+        public Light2D MyLight{get{return myLight;}protected set{myLight = value;}}
         
         // タスク管理用
         public CancellationTokenSource cts{get;private set;} = new CancellationTokenSource();  

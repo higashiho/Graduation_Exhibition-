@@ -12,26 +12,34 @@ namespace Player
         private BaseTrump trump;
 
         // インスタンス化
-        private PlayerMove movePlayer = new PlayerMove();
+        private PlayerMove movePlayer;
         private CreateTrump createTrump = new CreateTrump(); 
         // Start is called before the first frame update
         void Start()
         {
+            movePlayer = new PlayerMove(InGameSceneController.Player);
         }
 
         // Update is called once per frame
         void Update()
         {
+            playerUpdate();
+        }
+
+        // 更新関数
+        private void playerUpdate()
+        {
+
             // プレイヤー挙動関係
             switch(playerStatus)
             {
                 // 移動挙動
                 case PlayerState.MOVE:
-                    movePlayer.Move(this, playerData);
+                    movePlayer.Move();
                     break;
                 // ジャンプ挙動
                 case PlayerState.JUMP:
-                    movePlayer.Jump(this, playerData);
+                    movePlayer.Jump();
                     break;
                 // 通常時
                 case PlayerState.DEFAULT:
@@ -39,6 +47,7 @@ namespace Player
                     break;
                 // エネミーとの座標変更時
                 case PlayerState.CHANGE:
+                case PlayerState.WARP:
                     break;
                 default:
                     break;
@@ -51,6 +60,5 @@ namespace Player
             // トランプ生成
             createTrump.Move(this, trump, InGameSceneController.UI);         
         }
-
     }
 }

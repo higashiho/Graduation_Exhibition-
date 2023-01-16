@@ -12,7 +12,6 @@ namespace EnemyLight
         {
             // 初期化
             Items = GameObject.FindGameObjectsWithTag("Item");
-            Enemys = GameObject.FindGameObjectsWithTag("Enemy");
             
             // アイテムの配列をvector3配列に変換
             for(int i = 0; i< Items.Length; i++)
