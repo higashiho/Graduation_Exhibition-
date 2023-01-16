@@ -11,6 +11,8 @@ namespace Enemy
         // インスタンス化
         private EnemyAttack attackEnemy = new EnemyAttack();
         private EnemyMove moveEnemy = new EnemyMove();
+
+        private PoliceAnimation animationPolice = new PoliceAnimation();
         // Start is called before the first frame update
         void Start()
         {
@@ -37,6 +39,8 @@ namespace Enemy
                 default:
                     break;
             }
+
+            animationPolice.PoliceRightMoveSprite(this);
         }
         
         // 画面外に出た処理

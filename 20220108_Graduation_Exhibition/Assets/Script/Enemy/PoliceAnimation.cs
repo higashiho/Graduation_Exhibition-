@@ -7,26 +7,28 @@ namespace Enemy
     public class PoliceAnimation
     {
         //アニメーションに切り替えと再生
-        private void policeRightMoveSprite(BaseEnemy tmpEnemy)
+        public void PoliceRightMoveSprite(BaseEnemy tmpEnemy)
         {
-            switch(enemyStatus)
+            switch(tmpEnemy.EnemysStatus)
             {
-                // 移動挙動
-                case EnemyState.MOVE:
-                    
-                    break;
-                // 攻撃挙動
-                case EnemyState.ATTACK:
-                    
-                    break;
-                // プレイヤーとの座標変更時
-                case EnemyState.CHANGE:
-                    
-                    break;
+                case BaseEnemy.EnemyState.MOVE:             //右移動と左移動の切り替え
+                    if(tmpEnemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.LEFT)
+                    {
+                        tmpEnemy.PoliceLeftMoveAnm.Play("LeftMove");
+                        Debug.Log("ok");
+                    }
+                    else if(tmpEnemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.RIGHT)
+                        tmpEnemy.PoliceLeftMoveAnm.Play("Default");
+                        
+                        break;
+
+                case BaseEnemy.EnemyState.ATTACK:           //攻撃アニメーション
+                    if(tmpEnemy.EnemysStatus == BaseEnemy.EnemyState.ATTACK);
+                        
+                        break;
                 default:
-                    break;
-            }
-            tmpEnemy.PoliceRightMoveAnm.enabled = true;
+                        break;
+}
         }
     }
 }
