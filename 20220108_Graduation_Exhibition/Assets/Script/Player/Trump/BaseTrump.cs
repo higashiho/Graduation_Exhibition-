@@ -17,9 +17,6 @@ namespace Trump
         protected Vector3 shotForward;  
         public Vector3 ShotForward{get{return shotForward;}set{shotForward = value;}}
 
-        // 時間計測
-        protected float time;
-        public float TimeManage{get{return time;}set {time = value;}}
 
 
         // 回収イベント

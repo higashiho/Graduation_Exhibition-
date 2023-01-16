@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Warp;
 
 
 namespace Player
@@ -22,6 +23,15 @@ namespace Player
         protected PlayerState playerStatus = PlayerState.DEFAULT;
         public PlayerState PlayerStatus{get{return playerStatus;}set {playerStatus = value;}}
 
+        
+
+        [SerializeField, Header("ワープする座標")]
+        private Vector3 warpPos;
+        public Vector3 WarpPos{get{return warpPos;}set{warpPos = value;}}
+
+        [SerializeField, Header("スタートワープ装置")]
+        protected BaseWarp startWarpMecha;
+        public BaseWarp StartWarpMecha{get{return startWarpMecha;}set{startWarpMecha = value;}}
         
         // トランプを打てるかフラグ
         [SerializeField]

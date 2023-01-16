@@ -9,11 +9,15 @@ namespace Player
 {
     public class PlayerMove
     {
-        
-        public static PlayerMove MovePlayer{get;private set;} = new PlayerMove();
+        private BasePlayer tmpPlayer;
+
+        public PlayerMove(BasePlayer tmp)
+        {
+            tmpPlayer = tmp;
+        }
         // プレイヤー挙動
         // 第一引数：動かすオブジェクト　第二引数：オブジェクトのデータ
-        public void Move(BasePlayer obj, PlayerData playerData)
+        public void Move( PlayerData playerData)
         {
             var pos = new Vector3();
 
@@ -24,25 +28,25 @@ namespace Player
                 pos.x += playerData.PlayerSpeed * Time.deltaTime;
             // 何もキーが押されていない場合はステート初期化
             else
-                obj.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
+                tmpPlayer.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
 
-            obj.gameObject.transform.position += pos;
+            tmpPlayer.gameObject.transform.position += pos;
         }
         
         // ジャンプ挙動
         // 第一引数：動かすオブジェクト　第二引数：オブジェクトのデータ
-        public async void Jump(BasePlayer obj, PlayerData playerData)
+        public async void Jump( PlayerData playerData)
         {
             // フラグがたってない場合
             if(!playerData.JumpFlag)
             {
                 playerData.JumpFlag = true;
-                obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(0,playerData.PlayerJumpPower,0));
+                tmpPlayer.GetComponent<Rigidbody2D>().AddForce(new Vector3(0,playerData.PlayerJumpPower,0));
                 // 1秒後にフラグを折る
                 await jumpCoolTime(playerData);
 
                 // ステート初期化
-                obj.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
+                tmpPlayer.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
             }
         }
         

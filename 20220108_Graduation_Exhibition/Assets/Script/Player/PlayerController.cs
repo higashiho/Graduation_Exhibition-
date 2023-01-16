@@ -12,11 +12,13 @@ namespace Player
         private BaseTrump trump;
 
         // インスタンス化
-        private PlayerMove movePlayer = new PlayerMove();
+        private PlayerMove movePlayer;
         private CreateTrump createTrump = new CreateTrump(); 
         // Start is called before the first frame update
         void Start()
         {
+            movePlayer = new PlayerMove(InGameSceneController.Player);
+            
         }
 
         // Update is called once per frame
@@ -27,11 +29,11 @@ namespace Player
             {
                 // 移動挙動
                 case PlayerState.MOVE:
-                    movePlayer.Move(this, playerData);
+                    movePlayer.Move(playerData);
                     break;
                 // ジャンプ挙動
                 case PlayerState.JUMP:
-                    movePlayer.Jump(this, playerData);
+                    movePlayer.Jump( playerData);
                     break;
                 // 通常時
                 case PlayerState.DEFAULT:

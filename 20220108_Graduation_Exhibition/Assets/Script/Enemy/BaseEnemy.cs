@@ -9,6 +9,9 @@ namespace Enemy
 {
     public class BaseEnemy : MonoBehaviour
     {
+        // 初期座標
+        protected Vector3 startPos;
+        public Vector3 StartPos{get{return startPos;}set{startPos = value;}}
         // エネミーの状態
         public enum EnemyState
         {
