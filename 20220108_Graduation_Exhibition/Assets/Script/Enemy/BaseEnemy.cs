@@ -46,6 +46,12 @@ namespace Enemy
         protected GameObject rightVision;
         public GameObject RightVision{get{return rightVision;}private set{rightVision = value;}}
 
+        [Header("アニメーション管理")]
+        [SerializeField]
+        protected SimpleAnimation policeLeftMoveAnm;
+        public SimpleAnimation PoliceLeftMoveAnm{get{return policeLeftMoveAnm;}private set{policeLeftMoveAnm = value;}}
+        
+
         [Header("攻撃弾")]
         [SerializeField]
         protected BaseBullet bullet; 
