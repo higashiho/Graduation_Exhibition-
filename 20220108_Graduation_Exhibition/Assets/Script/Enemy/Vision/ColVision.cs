@@ -13,7 +13,8 @@ namespace Vision
         // 当たり判定
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if(other.gameObject.tag == "Player")
+            // プレイヤーのステートがワープではないとき
+            if(other.gameObject.tag == "Player" && InGameSceneController.Player.PlayerStatus != Player.BasePlayer.PlayerState.WARP)
             {
                 Detection();
             }

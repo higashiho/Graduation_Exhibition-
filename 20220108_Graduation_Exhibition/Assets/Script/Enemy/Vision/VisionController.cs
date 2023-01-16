@@ -13,13 +13,13 @@ namespace Vision
         // Start is called before the first frame update
         void Start()
         {
-            moveVision.StartOffset(this, enemy);
+            moveVision.StartOffset(this);
         }
 
         // Update is called once per frame
         void Update()
         {
-            moveVision.Move(this, enemy);
+            moveVision.Move(this);
         }
     }
 }

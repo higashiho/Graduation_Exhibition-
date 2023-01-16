@@ -15,7 +15,6 @@ namespace Enemy
                     if(tmpEnemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.LEFT)
                     {
                         tmpEnemy.PoliceLeftMoveAnm.Play("LeftMove");
-                        Debug.Log("ok");
                     }
                     else if(tmpEnemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.RIGHT)
                         tmpEnemy.PoliceLeftMoveAnm.Play("Default");

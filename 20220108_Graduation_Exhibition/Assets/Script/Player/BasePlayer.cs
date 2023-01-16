@@ -17,13 +17,18 @@ namespace Player
             DEFAULT,
             MOVE,
             JUMP,
-            CHANGE
+            CHANGE,
+            WARP
         }
         [SerializeField]
         protected PlayerState playerStatus = PlayerState.DEFAULT;
         public PlayerState PlayerStatus{get{return playerStatus;}set {playerStatus = value;}}
 
         
+
+        [SerializeField, Header("ワープ時のマスク")]
+        protected SpriteMask playerMask;
+        public SpriteMask PlauerMask{get{return playerMask;}private set{playerMask = value;}}
 
         [SerializeField, Header("ワープする座標")]
         private Vector3 warpPos;

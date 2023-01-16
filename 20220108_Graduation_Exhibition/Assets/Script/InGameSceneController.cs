@@ -21,8 +21,6 @@ public class InGameSceneController : MonoBehaviour
     public static BaseLight enemyLight{get;private set;}
     private GameObject[] enemys = new GameObject[20];
     public static BaseEnemy[] Enemys = new BaseEnemy[20];
-
-
     
     // obujectPool
     public static FactoryBullet BulletObjectPool{get;private set;}

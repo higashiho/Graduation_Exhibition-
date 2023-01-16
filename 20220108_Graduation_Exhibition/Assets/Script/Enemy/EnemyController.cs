@@ -21,6 +21,14 @@ namespace Enemy
         // Update is called once per frame
         void Update()
         {
+            if(InGameSceneController.Player.PlayerStatus != Player.BasePlayer.PlayerState.WARP)
+                enemyUpdate();
+        }
+        
+        // 挙動関数
+        private void enemyUpdate()
+        {
+
             switch(enemyStatus)
             {
                 // 移動挙動
@@ -48,9 +56,5 @@ namespace Enemy
             animationPolice.PoliceRightMoveSprite(this);
         }
         
-        // 画面外に出た処理
-        void OnBecameInvisible()
-        {
-        }
     }
 }

@@ -10,7 +10,7 @@ namespace Bullet
         // 表示時処理
         private async void OnEnable()
         {
-            await BulletMove.MoveBullet.Callback(this, bulletData, cts.Token);
+            await BulletMove.MoveBullet.Callback(this, cts.Token);
         }
 
         // Update is called once per frame

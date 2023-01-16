@@ -10,6 +10,10 @@ namespace Warp
         protected bool onWarp = false;
         public bool OnWarp{get{return onWarp;}set{onWarp = value;}}
 
+        [SerializeField, Header("playerと当たっているか")]
+        protected bool onPlayer;
+        public bool OnPlayer{get{return onPlayer;}set{onPlayer =value;}}
+
         // インスタンス化
         protected WarpMove warpMove = new WarpMove();
 
@@ -20,7 +24,7 @@ namespace Warp
         {
             // フラグがたっていたら色変更
             if(OnWarp)
-                this.GetComponent<SpriteRenderer>().color = Color.blue;
+                this.GetComponent<SpriteRenderer>().color = Color.black;
         }
     }
 }

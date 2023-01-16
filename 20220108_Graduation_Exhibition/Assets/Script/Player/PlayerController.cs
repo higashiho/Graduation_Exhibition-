@@ -24,16 +24,23 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            playerUpdate();
+        }
+
+        // 更新関数
+        private void playerUpdate()
+        {
+
             // プレイヤー挙動関係
             switch(playerStatus)
             {
                 // 移動挙動
                 case PlayerState.MOVE:
-                    movePlayer.Move(playerData);
+                    movePlayer.Move();
                     break;
                 // ジャンプ挙動
                 case PlayerState.JUMP:
-                    movePlayer.Jump( playerData);
+                    movePlayer.Jump();
                     break;
                 // 通常時
                 case PlayerState.DEFAULT:
@@ -41,6 +48,7 @@ namespace Player
                     break;
                 // エネミーとの座標変更時
                 case PlayerState.CHANGE:
+                case PlayerState.WARP:
                     break;
                 default:
                     break;
@@ -53,6 +61,5 @@ namespace Player
             // トランプ生成
             createTrump.Move(this, trump, InGameSceneController.UI);         
         }
-
     }
 }

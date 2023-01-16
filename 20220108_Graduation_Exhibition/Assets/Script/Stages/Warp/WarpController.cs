@@ -16,7 +16,10 @@ namespace Warp
         void Update()
         {
             warpCheck();
-            warpMove.Move(this);
+
+            // プレイヤーと接地しているか
+            if(OnPlayer)
+                warpMove.Move(this);
         }
     }
 }

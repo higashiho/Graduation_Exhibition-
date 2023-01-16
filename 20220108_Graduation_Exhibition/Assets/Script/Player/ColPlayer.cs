@@ -20,41 +20,51 @@ namespace Player
             {
                 SceneManager.LoadScene("ResultScene");
             }
+            if(col.gameObject.tag == "Item")
+            {
+                // 表示を消して取得数を増やす
+                col.gameObject.SetActive(false);
+                BaseUI.HaveItem++;
+            }
         }
         private void OnTriggerEnter2D(Collider2D other) 
         {
-            if(other.gameObject.tag == "Item")
-            {
-                // 表示を消して取得数を増やす
-                other.gameObject.SetActive(false);
-                BaseUI.HaveItem++;
-            }
+
             if(other.gameObject.tag == "WarpMecha")
             {
+                var tmpObj = other.GetComponent<BaseWarp>();
                 // スタートワープメカではないときの処理
                 if(other.gameObject.name != "StartWarpMecha")
                 {
-                    var tmpObj = other.GetComponent<BaseWarp>();
                     // ワープできるフラグがたっていないと
                     if(!tmpObj.OnWarp)
                     {
                         // ワープ座標に設定してフラグを立てる
                         player.WarpPos = other.transform.position;
                         tmpObj.OnWarp = true;
+                        tmpObj.OnPlayer = true;
                     }
                 }
                 // スタートワープメカの場合
                 else
                 {
-                    var tmpObj = other.GetComponent<BaseWarp>();
                     // ワープできるフラグがたっていなくてスタートワープメカを格納していない場合
                     if(!tmpObj.OnWarp && !player.StartWarpMecha)
                     {
                         // スタートワープメカを格納してフラグを立てる
                         player.StartWarpMecha = tmpObj;
                         tmpObj.OnWarp = true;
+                    
                     }
                 }
+                tmpObj.OnPlayer = true;
+            }
+        }
+        private void OnTriggerExit2D(Collider2D other) 
+        {
+            if(other.gameObject.tag == "WarpMecha")
+            {
+                    other.GetComponent<BaseWarp>().OnPlayer = false;
             }
         }
     }
