@@ -6,6 +6,9 @@ namespace Warp
 {
     public class BaseWarp : MonoBehaviour
     {
+        [SerializeField, Header("電気のデータ")]
+        protected ElectricData electricData;
+        public ElectricData ElectricsData{get{return electricData;}private set{electricData = value;}}
         [SerializeField, Header("ワープできるか")]
         protected bool onWarp = false;
         public bool OnWarp{get{return onWarp;}set{onWarp = value;}}

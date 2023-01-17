@@ -22,7 +22,10 @@ namespace Warp
         public async void Move(BaseWarp tmpWarp)
         {
             // ワープフラグがある時かつステートがワープじゃないとき
-            if(tmpWarp.OnWarp && InGameSceneController.Player.PlayerStatus != BasePlayer.PlayerState.WARP)
+            if(tmpWarp.OnWarp && 
+            InGameSceneController.Player.PlayerStatus != BasePlayer.PlayerState.WARP && 
+            InGameSceneController.Player.WarpCount != tmpWarp.ElectricsData.MaxElectric
+            )
             {
                 // 上ボタンを押された時
                 if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -130,7 +133,7 @@ namespace Warp
         {
              tmpPlayerTween = InGameSceneController.Player.PlauerMask.transform.DOMove(
                     InGameSceneController.Player.transform.position + tmpPos,
-                    1.5f
+                    Const.WARP_TIME
                 ).SetEase(Ease.Linear).OnComplete(() => 
                 {
                     InGameSceneController.Player.PlauerMask.enabled = false;

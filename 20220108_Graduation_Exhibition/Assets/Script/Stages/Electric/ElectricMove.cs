@@ -103,7 +103,7 @@ namespace Electric
             for(int i = 0; i < tmpElectric.ElectricUI.Length; i++)
             {
                 tmpPadding = tmpElectric.ElectricUI[i].padding;
-                // 0.01秒おきに1ずつ減らす
+                // 0.01秒おきに0.2ずつ減らす
                 for(int j = 0; j < Const.CHANGE_ELECTRIC_TIME; j++)
                 {
                     // Topの値を少しずつ減らす
