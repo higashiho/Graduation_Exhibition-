@@ -3,7 +3,10 @@ guid: 96cf16dfea717744492f6d9e03044435
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - electricData: {fileID: 11400000, guid: 1593d8d4444e8254da3df3a8c361dda2, type: 2}
+  - mainLight: {instanceID: 0}
+  - cameraLight: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

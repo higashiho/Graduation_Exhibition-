@@ -651,6 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700d345c5592036478575bb42a0626ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  electricData: {fileID: 0}
   onWarp: 0
   onPlayer: 0
 --- !u!1 &267196904
@@ -5012,6 +5013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700d345c5592036478575bb42a0626ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  electricData: {fileID: 0}
   onWarp: 0
   onPlayer: 0
 --- !u!1 &916335451
@@ -16005,6 +16007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700d345c5592036478575bb42a0626ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  electricData: {fileID: 0}
   onWarp: 0
   onPlayer: 0
 --- !u!4 &1435683820 stripped
