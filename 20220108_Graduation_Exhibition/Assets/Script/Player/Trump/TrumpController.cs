@@ -8,8 +8,6 @@ namespace Trump
 {
     public class TrumpController : BaseTrump
     {
-        // インスタンス化
-        private TrumpMove moveTrump = new TrumpMove();
         async void OnEnable()
         {
             // 指定秒後に回収

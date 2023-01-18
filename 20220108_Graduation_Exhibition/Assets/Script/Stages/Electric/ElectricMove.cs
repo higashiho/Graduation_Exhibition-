@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks; 
-using DG.Tweening;
+using System.Threading;
 
 namespace Electric
 {
@@ -54,7 +54,7 @@ namespace Electric
         /// </summary>
         /// <param name="tmpElectric"></param>　電力クラスの実体
         /// <returns></returns>
-        public async void ElectricManage(BaseElectric tmpElectric)
+        public async void ElectricManage(BaseElectric tmpElectric, CancellationToken token)
         {
             
             // padding更新
@@ -65,7 +65,15 @@ namespace Electric
             {
                 // メインのライトを消してワープ回数を初期化
                 tmpElectric.MainLight.enabled = false;
-                await electricCharge(tmpElectric);
+                await electricCharge(tmpElectric, token);
+                
+                // キャンセルが要求されている場合
+                if ( token.IsCancellationRequested )
+                {
+                    Debug.Log ( "Canceled." );
+                    return;
+                }
+                // 初期化
                 InGameSceneController.Player.WarpCount = 0;
                 tmpElectric.MainLight.enabled = true;
             }
@@ -95,7 +103,7 @@ namespace Electric
         /// </summary>
         /// <param name="tmpElectric"></param> 電力クラスの実体
         /// <returns></returns>
-        private async UniTask electricCharge(BaseElectric tmpElectric)
+        private async UniTask electricCharge(BaseElectric tmpElectric, CancellationToken token)
         {
             var tmpPadding = new Vector4(0, 0, 0, 0);
 
@@ -106,6 +114,13 @@ namespace Electric
                 // 0.01秒おきに0.2ずつ減らす
                 for(int j = 0; j < Const.CHANGE_ELECTRIC_TIME; j++)
                 {
+            
+                    // キャンセルが要求されている場合
+                    if ( token.IsCancellationRequested )
+                    {
+                        Debug.Log ( "Canceled." );
+                        return;
+                    }
                     // Topの値を少しずつ減らす
                     tmpPadding.w -= Const.PADDING_UP_NAM;
                     tmpElectric.ElectricUI[i].padding = tmpPadding;
