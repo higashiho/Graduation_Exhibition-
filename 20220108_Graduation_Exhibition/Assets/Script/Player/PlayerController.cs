@@ -45,9 +45,10 @@ namespace Player
                 case PlayerState.DEFAULT:
                     imput();
                     break;
-                // エネミーとの座標変更時
+                // 以下のステートの時は入力を受け付けない
                 case PlayerState.CHANGE:
                 case PlayerState.WARP:
+                case PlayerState.RETRY:
                     break;
                 default:
                     break;

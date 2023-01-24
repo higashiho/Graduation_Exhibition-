@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Threading;
 
 namespace EnemyLight
@@ -10,6 +11,8 @@ namespace EnemyLight
         // Start is called before the first frame update
         void Start()
         {
+            // 現在のシーン取得
+            NowScene = SceneManager.GetActiveScene().name;
             // 初期化
             Items = GameObject.FindGameObjectsWithTag("Item");
             

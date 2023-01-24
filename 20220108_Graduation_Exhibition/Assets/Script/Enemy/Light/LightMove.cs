@@ -13,11 +13,7 @@ namespace EnemyLight
         public void Move(BaseLight tmpLight)
         {
             // アイテムの座標に回る
-            tmpLight.transform.DOPath(tmpLight.ItemsPos, Const.LIGHT_MOVE_TIME).SetEase(Ease.Linear).OnComplete(() =>
-            {
-                // 処理が終わったら処理を回す
-                Move(tmpLight);
-            });
+            tmpLight.transform.DOPath(tmpLight.ItemsPos, Const.LIGHT_MOVE_TIME).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
         }
 
         // 消えた後指定秒後に再出現

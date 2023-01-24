@@ -37,6 +37,8 @@ public class Const
     public const float MOUSE_POS_X = 10.0f;               // マウス座標の正規化
     // 以上Debug用定数
 
+    // フェイド用定数
+    public const float MAX_ALPHA_TIME = 2f;           // フェイド時間
 
     // 以下Task用定数
     public const int CHANGE_SECOND = 1000;              // nミリ秒を秒に変換用
