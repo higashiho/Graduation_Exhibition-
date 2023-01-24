@@ -535,11 +535,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67b366023193354781976b3eb42e697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trumpAnimator: {fileID: 0}
+  trumpSlider: {fileID: 0}
   itemsUI: {fileID: 0}
   items:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  expText:
   - {fileID: 0}
   - {fileID: 0}
   scoreText: {fileID: 173360833}
@@ -636,7 +639,6 @@ GameObject:
   m_Component:
   - component: {fileID: 749026649}
   - component: {fileID: 749026653}
-  - component: {fileID: 749026652}
   - component: {fileID: 749026651}
   - component: {fileID: 749026650}
   m_Layer: 5
@@ -708,29 +710,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &749026652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749026648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &749026653
 Canvas:
   m_ObjectHideFlags: 0

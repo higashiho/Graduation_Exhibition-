@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
+using System.Threading;
 
 namespace Electric
 {
@@ -24,6 +25,9 @@ namespace Electric
         protected RectMask2D[] electricUI = new RectMask2D[3];
         public RectMask2D[] ElectricUI{get{return electricUI;} private set{electricUI = value;}}
 
+        // タスク管理用
+        public CancellationTokenSource cts{get;private set;} = new CancellationTokenSource();  
+ 
 
         // インスタンス化
         protected ElectricMove electricMove = new ElectricMove();

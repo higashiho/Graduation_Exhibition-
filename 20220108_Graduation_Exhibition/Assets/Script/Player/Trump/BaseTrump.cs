@@ -24,5 +24,9 @@ namespace Trump
 
         // タスク管理用
         public CancellationTokenSource cts{get;private set;} = new CancellationTokenSource();  
+    
+        
+        // インスタンス化
+        protected TrumpMove moveTrump = new TrumpMove();
     }
 }

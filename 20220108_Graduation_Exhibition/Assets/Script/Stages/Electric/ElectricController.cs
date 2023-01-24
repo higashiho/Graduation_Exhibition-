@@ -16,7 +16,13 @@ namespace Electric
         void Update()
         {
             electricMove.Move(this);
-            electricMove.ElectricManage(this);
+            electricMove.ElectricManage(this, cts.Token);
+        }
+
+        void OnDestroy()
+        {
+            // 削除されたらタスクキャンセル
+            cts.Cancel();
         }
     }
 }
