@@ -12,7 +12,7 @@ namespace SceneMove
         // Start is called before the first frame update
         void Start()
         {
-            
+            DG.Tweening.DOTween.SetTweensCapacity(tweenersCapacity:500, sequencesCapacity:50);
             // インスタンス化されたBaseSceneが自身でない場合削除
             if(SceneInstance != null)
             {

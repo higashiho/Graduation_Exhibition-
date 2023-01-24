@@ -39,6 +39,7 @@ namespace UI
         [SerializeField, Header("ゲームオーバーテキスト")]
         protected TextMeshProUGUI gameOverText;
         public TextMeshProUGUI  GameOverText{get{return gameOverText;}}
-
+        
+        
     }
 }

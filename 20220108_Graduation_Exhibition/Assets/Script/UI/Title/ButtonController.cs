@@ -12,8 +12,9 @@ namespace UI
     {
         public void Fadeout()
         {
-            // シーンコントローラーのフェイドアウト関数呼び出し
-            SceneMoveController.SceneInstance.TmpSceneMove.Fadeout();
+            if(BaseSceneMove.SceneInstance.FadeoutTween == null)
+                // シーンコントローラーのフェイドアウト関数呼び出し
+                SceneMoveController.SceneInstance.TmpSceneMove.Fadeout();
 
         }
     }

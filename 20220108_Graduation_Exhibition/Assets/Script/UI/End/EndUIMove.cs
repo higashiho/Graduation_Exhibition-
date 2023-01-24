@@ -43,11 +43,15 @@ namespace UI
 
         private async UniTask textMove()
         {
-            tmpUI.GameOverText.transform.DOLocalMove(Vector3.zero,Const.MOVE_TIME).SetEase(Ease.InQuad);
+            tmpUI.GameOverText.transform.DOLocalMove(Const.MOVE_TARGET_POS,Const.MOVE_TIME).SetEase(Ease.InQuad);
             while(true)
             {
-                
+                var tmpWidth = tmpUI.GameOverText.preferredWidth;
+                tmpWidth++;
+                tmpUI.GameOverText.characterWidthAdjustment = tmpWidth;
                 await UniTask.Delay(Const.WAIT_TIME);
+                if(tmpWidth >= Const.MAX_PREFERRED_WIDTH)
+                    break;
             }
         }
     }

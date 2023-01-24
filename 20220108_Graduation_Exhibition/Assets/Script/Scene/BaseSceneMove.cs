@@ -18,6 +18,9 @@ namespace SceneMove
         // フェイドイン用のTween
         protected Tween fadeinTween;
         public Tween FadeinTween{get{return fadeinTween;} set{fadeinTween = value;}}
+        // フェイドアウト用のTween
+        protected Tween fadeoutTween;
+        public Tween FadeoutTween{get{return fadeoutTween;} set{fadeoutTween = value;}}
         [SerializeField, Header("フェイド用パネル")]
         protected Image fadePanel;
         public Image FadePanel{get{return fadePanel;}}

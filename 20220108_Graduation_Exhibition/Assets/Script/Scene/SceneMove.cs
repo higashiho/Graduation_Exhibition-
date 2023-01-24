@@ -99,19 +99,19 @@ namespace SceneMove
                 tmpScene.SceneState &= ~tmpScene.SceneState;
                 tmpScene.SceneState |= Const.SCENE_MAIN;
             }
-            else if(tmpScene.SceneState == Const.SCENE_MAIN)
-            {
-                SceneManager.LoadScene("ResultScene");
-                // メインステートフラグのみ折って次のステートを入れる
-                tmpScene.SceneState &= ~Const.SCENE_MAIN;
-                tmpScene.SceneState |= Const.SCENE_RESULT;
-            }
-            else 
+            else if(tmpScene.SceneState == Const.SCENE_RESULT)
             {
                 SceneManager.LoadScene("TitleScene");
                 // フラグを折って次のステートを入れる
                 tmpScene.SceneState &= ~tmpScene.SceneState;
                 tmpScene.SceneState |= Const.SCENE_TITLE;
+            }
+            else 
+            {
+                SceneManager.LoadScene("ResultScene");
+                // メインステートフラグのみ折って次のステートを入れる
+                tmpScene.SceneState &= ~Const.SCENE_MAIN;
+                tmpScene.SceneState |= Const.SCENE_RESULT;
             }
             
         }
