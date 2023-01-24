@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace UI{
-    public class SceneUIController : BaseUI
+    public class EndSceneUIController : BaseUI
     {
         // インスタンス化
         private EndUIMove uiMove;

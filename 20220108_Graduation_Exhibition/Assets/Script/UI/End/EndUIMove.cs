@@ -21,6 +21,7 @@ namespace UI
         /// </summary>
         public async void Move()
         {
+            await UniTask.WaitWhile(() => BaseSceneMove.SceneInstance.FadePanel.color.a != 0);
             // ゲームCLEARステートがたっていたらスコア表示
             if((BaseSceneMove.SceneInstance.SceneState | Const.SCENE_MAIN_GAME_CLEAR) == Const.SCENE_RESULT)
             {
@@ -32,13 +33,8 @@ namespace UI
             {
                 if(tmpUI.ScoreText.transform.parent.gameObject.activeSelf)
                     tmpUI.ScoreText.transform.parent.gameObject.SetActive(false);
-
                 await textMove();
             }
-            
-            
-            // クリアかゲームオーバーが立っていたら折る
-            BaseSceneMove.SceneInstance.SceneState &= ~(Const.SCENE_MAIN_GAME_CLEAR | Const.SCENE_MAIN_GAME_OVER);
         }
 
         private async UniTask textMove()
@@ -46,11 +42,11 @@ namespace UI
             tmpUI.GameOverText.transform.DOLocalMove(Const.MOVE_TARGET_POS,Const.MOVE_TIME).SetEase(Ease.InQuad);
             while(true)
             {
-                var tmpWidth = tmpUI.GameOverText.preferredWidth;
-                tmpWidth++;
-                tmpUI.GameOverText.characterWidthAdjustment = tmpWidth;
+                var tmpWidth = tmpUI.GameOverText.characterSpacing;
+                tmpWidth += Const.CHARACTER_UP_NAM;
+                tmpUI.GameOverText.characterSpacing = tmpWidth;
                 await UniTask.Delay(Const.WAIT_TIME);
-                if(tmpWidth >= Const.MAX_PREFERRED_WIDTH)
+                if(tmpWidth >= 0)
                     break;
             }
         }

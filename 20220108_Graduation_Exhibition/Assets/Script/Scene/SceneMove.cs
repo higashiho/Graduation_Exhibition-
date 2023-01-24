@@ -39,11 +39,11 @@ namespace SceneMove
                     Debug.Log("SCENE_MAIN_GAME_OVER");
                     Fadeout();
                     break;
-                case Const.SCENE_RESULT:
-                    fadein();
-
+                case Const.SCENE_RESULT | Const.SCENE_MAIN_GAME_OVER:
+                case Const.SCENE_RESULT | Const.SCENE_MAIN_GAME_CLEAR:
                     if(Input.GetKeyDown(KeyCode.Return) && tmpScene.FadePanel.color.a == 0)
                         Fadeout();
+                    fadein();
                     break;
                 default:
                     break;
@@ -64,7 +64,6 @@ namespace SceneMove
                     // パネルが表示状態の場合非表示にする
                     if(tmpScene.FadePanel.gameObject.activeSelf)
                         tmpScene.FadePanel.gameObject.SetActive(false);
-                    tmpScene.FadeinTween = null;
                 });
             }
         }
@@ -74,7 +73,7 @@ namespace SceneMove
         /// </summary>
         public void Fadeout()
         {   
-            tmpScene.FadePanel.DOFade(Const.MAX_ALPHA, Const.FADE_TIME).
+            tmpScene.FadeoutTween = tmpScene.FadePanel.DOFade(Const.MAX_ALPHA, Const.FADE_TIME).
             SetEase(Ease.Linear).OnStart(() => 
             {
                 // パネルが非表示状態の場合表示にする
@@ -88,10 +87,6 @@ namespace SceneMove
         /// </summary>
         private void compReset()
         {
-            Debug.Log(tmpScene.SceneState);
-
-
-            Debug.Log(tmpScene.SceneState);
             if(tmpScene.SceneState == Const.SCENE_TITLE)
             {
                 SceneManager.LoadScene("GameScene");
@@ -114,6 +109,7 @@ namespace SceneMove
                 tmpScene.SceneState |= Const.SCENE_RESULT;
             }
             
+            tmpScene.FadeinTween = null;
         }
     }
     

@@ -777,7 +777,6 @@ GameObject:
   - component: {fileID: 749026649}
   - component: {fileID: 749026653}
   - component: {fileID: 749026651}
-  - component: {fileID: 749026650}
   m_Layer: 5
   m_Name: Scores
   m_TagString: Untagged
@@ -807,29 +806,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!320 &749026650
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749026648}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 7f8da6515023b2a489ec1af4b674be0f, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 2556162046331277374, guid: 7f8da6515023b2a489ec1af4b674be0f, type: 2}
-    value: {fileID: 173360836}
-  - key: {fileID: 6172903238785961937, guid: 7f8da6515023b2a489ec1af4b674be0f, type: 2}
-    value: {fileID: 280119697}
-  - key: {fileID: 364410535734228840, guid: 7f8da6515023b2a489ec1af4b674be0f, type: 2}
-    value: {fileID: 829546281}
-  m_ExposedReferences:
-    m_References: []
 --- !u!114 &749026651
 MonoBehaviour:
   m_ObjectHideFlags: 0
