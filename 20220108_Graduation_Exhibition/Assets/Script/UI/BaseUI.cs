@@ -12,10 +12,10 @@ namespace UI
         [Header("InGame")]
         [SerializeField, Header("トランプUI")]
         protected Slider trumpSlider;
-        public Slider TrumpSlider{get{return trumpSlider;}private set{trumpSlider = value;}}
+        public Slider TrumpSlider{get{return trumpSlider;}}
         [SerializeField, Header("アイテムのUI")]
         protected Text itemsUI;
-        public Text ItemsUI{get {return itemsUI;}private set{itemsUI = value;}}
+        public Text ItemsUI{get {return itemsUI;}}
 
         // アイテムの取得数
         protected static int haveItems;
@@ -30,11 +30,15 @@ namespace UI
         // 説明テキスト
         [SerializeField, Header("説明テキスト")]
         protected TextMeshProUGUI[] expText = new TextMeshProUGUI[2];
-        public TextMeshProUGUI[] ExpText{get{return expText;}private set{expText = value;}}
+        public TextMeshProUGUI[] ExpText{get{return expText;}}
 
         [Header("Result")]
         [SerializeField, Header("スコアテキスト")]
         protected TextMeshProUGUI  scoreText;
-        public TextMeshProUGUI  ScoreText{get{return scoreText;}private set{scoreText = value;}}
+        public TextMeshProUGUI  ScoreText{get{return scoreText;}}
+        [SerializeField, Header("ゲームオーバーテキスト")]
+        protected TextMeshProUGUI gameOverText;
+        public TextMeshProUGUI  GameOverText{get{return gameOverText;}}
+
     }
 }

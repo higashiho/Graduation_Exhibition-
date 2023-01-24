@@ -5038,7 +5038,7 @@ MonoBehaviour:
   trumpSlider: {fileID: 1644331065}
   itemsUI: {fileID: 433590600}
   items:
-  - {fileID: 1083780483}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -5741,11 +5741,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1083780483 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5276143973767712608, guid: a3ddf50f1755eae44a45d8eaf42d00d1, type: 3}
-  m_PrefabInstance: {fileID: 3557744393052300774}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1083780485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 60248179034961880, guid: a3ddf50f1755eae44a45d8eaf42d00d1, type: 3}

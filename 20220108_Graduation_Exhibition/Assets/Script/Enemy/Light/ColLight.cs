@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Player;
+using UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
@@ -17,9 +18,13 @@ namespace EnemyLight
             // プレイヤーとの当たり判定
             if(other.gameObject.tag == "Player" && InGameSceneController.Player.PlayerStatus != BasePlayer.PlayerState.WARP)
             {
-                enemyLight.RetryPanel.DOFade(Const.MAX_ALPHA, Const.MAX_ALPHA_TIME).SetEase(Ease.Linear).
+                enemyLight.RetryPanel.DOFade(Const.MAX_ALPHA, Const.FADE_TIME).SetEase(Ease.Linear).
                 OnStart(() =>InGameSceneController.Player.PlayerStatus = BasePlayer.PlayerState.RETRY).
-                OnComplete(() => SceneManager.LoadScene(enemyLight.NowScene));
+                OnComplete(() => 
+                {
+                    BaseUI.HaveItem = default;
+                    SceneManager.LoadScene(enemyLight.NowScene);
+                });
             }
         }
     }
