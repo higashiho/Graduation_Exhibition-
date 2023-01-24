@@ -7,7 +7,7 @@ namespace UI
     public class ExplanationMove
     {
         private float alpha = 1;
-        private Color textColor = new Color(0, 0, 0, 0);
+        private Color textColor = new Color(1, 1, 1, 0);
         // 挙動
         public void Move(BaseUI tmpUI)
         {

@@ -101,7 +101,7 @@ namespace Electric
         /// <summary>
         /// 電力を貯めるときの処理関数
         /// </summary>
-        /// <param name="tmpElectric"></param> 電力クラスの実体
+        /// <param name="tmpElectric">電力クラスの実体</param> 
         /// <returns></returns>
         private async UniTask electricCharge(BaseElectric tmpElectric, CancellationToken token)
         {
