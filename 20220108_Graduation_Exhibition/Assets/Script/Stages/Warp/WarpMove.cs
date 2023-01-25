@@ -18,7 +18,7 @@ namespace Warp
         /// <summary>
         /// ワープ挙動関数
         /// </summary>
-        /// <param name="tmpWarp">ワープの実体</param> 
+        /// <param name="tmpWarp"></param> ワープの実体
         public async void Move(BaseWarp tmpWarp)
         {
             // ワープフラグがある時かつステートがワープじゃないとき
@@ -95,12 +95,10 @@ namespace Warp
         /// <summary>
         /// ワープ時最初のマスク移動
         /// </summary>
-        /// <param name="tmpMaskPos">マスクの元座標</param>
-        /// <param name="tmpTargetPos">プレイヤーの目標座標</param>
+        /// <param name="tmpMaskPos"></param>マスクの元座標
+        /// <param name="tmpTargetPos"></param>プレイヤーの目標座標
         private void startWarpMove(Vector3 tmpMaskPos, Vector3 tmpTargetPos)
         {
-            if(tmpMaskPos == null)
-                return;
             InGameSceneController.Player.PlauerMask.enabled = true;
             InGameSceneController.Player.PlauerMask.transform.DOMove(
                 InGameSceneController.Player.transform.position,
@@ -114,8 +112,8 @@ namespace Warp
         /// <summary>
         /// プレイヤーのワープ時挙動
         /// </summary>
-        /// <param name="tmpMaskPos">マスクの元座標</param> 
-        /// <param name="tmpTargetPos">プレイヤーの目標座標</param> 
+        /// <param name="tmpMaskPos"></param> マスクの元座標
+        /// <param name="tmpTargetPos"></param> プレイヤーの目標座標
         private void playerMove(Vector3 tmpMaskPos, Vector3 tmpTargetPos)
         {
             InGameSceneController.Player.transform.DOMove(
@@ -130,7 +128,7 @@ namespace Warp
         /// <summary>
         /// ワープ時の初期化挙動
         /// </summary>
-        /// <param name="tmpPos">マスクの元座標</param> 
+        /// <param name="tmpPos"></param> マスクの元座標
         private void moveComp(Vector3 tmpPos)
         {
              tmpPlayerTween = InGameSceneController.Player.PlauerMask.transform.DOMove(

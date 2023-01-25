@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Threading;
 using UnityEngine.Rendering.Universal;
 
@@ -18,13 +17,7 @@ namespace EnemyLight
         protected Vector3[] itemsPos = new Vector3[4];
         public Vector3[] ItemsPos{get{return itemsPos;}set{itemsPos = value;}}
 
-        // 現在のシーン
-        public string NowScene{get;protected set;}
         
-        [SerializeField, Header("リトライパネル")]
-        protected Image retryPanel;
-        public Image RetryPanel{get{return retryPanel;}}
-
         [SerializeField, Header("自身のライト")]
         protected Light2D myLight;
         public Light2D MyLight{get{return myLight;}protected set{myLight = value;}}
