@@ -61,6 +61,13 @@ namespace Enemy
         [SerializeField]
         protected SpriteRenderer targetRenderer;    // 判定したいオブジェクトのrendererへの参照
 
+        //右向き左向き
+        [SerializeField, Header("右向き")]
+        public Renderer LightEnemy;
+        [SerializeField, Header("左向き")]
+        public Renderer LeftEnemy;
+        
+
         //スクリプト参照
         public EnemyMove MoveEnemy{get; private set;} = new EnemyMove();
 

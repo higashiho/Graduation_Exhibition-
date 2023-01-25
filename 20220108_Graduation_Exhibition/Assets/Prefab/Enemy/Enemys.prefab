@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5595472477954124074}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &1114550147
 SpriteRenderer:
@@ -200,7 +200,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5595472477954124074}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &1734682554
 SpriteRenderer:
@@ -363,7 +363,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5595472477954124074}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3624429847094384243
 MonoBehaviour:
@@ -476,7 +476,7 @@ Transform:
   m_Children:
   - {fileID: 5109520340755668481}
   m_Father: {fileID: 5595472477954124074}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1062558925833981340
 SpriteRenderer:
@@ -582,13 +582,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3174392988028230164}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.099999994, z: 0}
   m_LocalScale: {x: 0.5, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6767539884777924245}
   m_Father: {fileID: 5595472477954124074}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2712817982434613838
 SpriteRenderer:
@@ -702,11 +702,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8443601525305312755}
+  - {fileID: 5427327978696197324}
   - {fileID: 1114550146}
   - {fileID: 1734682555}
   - {fileID: 6998031587777303329}
-  - {fileID: 5427327978696197324}
-  - {fileID: 8443601525305312755}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -839,10 +839,11 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 2a1f466230ae468448f693aa0be4a029, type: 2}
   leftVision: {fileID: 1734682551}
   rightVision: {fileID: 1114550145}
-  policeAnm: {fileID: 0}
   myLight: {fileID: 3624429847094384243}
   bullet: {fileID: 4388299103519208363, guid: 9e41a42b0d46e044a96ab47aa5359bc4, type: 3}
-  targetRenderer: {fileID: 0}
+  targetRenderer: {fileID: 2712817982434613838}
+  LightEnemy: {fileID: 2712817982434613838}
+  LeftEnemy: {fileID: 1062558925833981340}
 --- !u!1 &3738690226150435857
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,7 +869,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3738690226150435857}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.88, y: -0.59999996, z: 0}
+  m_LocalPosition: {x: 0, y: -0.21, z: 0}
   m_LocalScale: {x: 2, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
