@@ -25,7 +25,6 @@ namespace UI
 
         async void Start()
         {
-            // フェイドインが終わりまで待ってボタンサイズを上げる
             await UniTask.WaitWhile(() => BaseSceneMove.SceneInstance.FadePanel.color.a != 0);
             var tmpWateTime = Const.WAIT_TIME / 2;
             moveButton.transform.DOScale(Vector3.one, tmpWateTime).SetEase(Ease.InCirc);
