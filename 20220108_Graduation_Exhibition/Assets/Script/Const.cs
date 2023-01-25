@@ -12,6 +12,7 @@ public class Const
     // 以下ステージ用定数
     public const float CHANGE_ELECTRIC_TIME = 500.0f;           // 電力回復時間(1/3なので合計15秒)
     public const float PADDING_UP_NAM = 0.2f;                   // 一回転で減るPaddingの値
+    public const int ELECTRIC_WAIT_TIME = 10;                   // 回復時の遅延時間（0.01秒）
     public const float PADDING_TOP_MAX = 100.0f;                // padding最大値
     // 以上ステージ用定数
 
@@ -36,28 +37,8 @@ public class Const
     public const float MOUSE_POS_X = 10.0f;               // マウス座標の正規化
     // 以上Debug用定数
 
-    // 以下フェイド用定数
-    public const float FADE_TIME = 2f;           // フェイド時間
-    // 以上フェイド用定数
-
-    // 以下シーン挙動用定数
-    // シーンステート用定数================================
-    public const uint SCENE_TITLE = 0x01;
-    public const uint SCENE_MAIN = 0x02;
-    public const uint SCENE_MAIN_GAME_CLEAR = 0x04;
-    public const uint SCENE_MAIN_GAME_OVER = 0x08;
-    public const uint SCENE_RESULT = 0x16;
-    // ==================================================
-    // 以上シーン挙動用定数
 
     // 以下Task用定数
     public const int CHANGE_SECOND = 1000;              // nミリ秒を秒に変換用
-    public const int WAIT_TIME = 10;                   // 遅延時間（0.01秒）
     // 以上Task用定数
-
-    // 以下UI用定数
-    public const float MOVE_TIME = 3.0f;                                        // テキストが動く時間
-    public static readonly Vector3 MOVE_TARGET_POS = new Vector3(0, 150, 0);    // テキストの目標座標
-    public const float CHARACTER_UP_NAM = 0.2f;                                 // 一回転で増えるCHARACTERの値
-    // 以上UI用定数
 }

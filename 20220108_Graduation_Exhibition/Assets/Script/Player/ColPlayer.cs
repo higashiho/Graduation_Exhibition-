@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SceneMove;
+using UnityEngine.SceneManagement;
 using UI;
 using Warp;
 
@@ -16,10 +16,9 @@ namespace Player
         // 当たり判定
         private void OnCollisionEnter2D(Collision2D col) 
         {
-            if(col.gameObject.tag == "Bullet" && player.PlayerStatus != BasePlayer.PlayerState.WARP && player.PlayerStatus != BasePlayer.PlayerState.RETRY)
+            if(col.gameObject.tag == "Bullet" && player.PlayerStatus != BasePlayer.PlayerState.WARP)
             {
-                player.PlayerStatus = BasePlayer.PlayerState.RETRY;
-                BaseSceneMove.SceneInstance.SceneState |= Const.SCENE_MAIN_GAME_OVER;
+                SceneManager.LoadScene("ResultScene");
             }
             if(col.gameObject.tag == "Item")
             {
