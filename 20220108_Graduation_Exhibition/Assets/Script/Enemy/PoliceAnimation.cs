@@ -14,14 +14,12 @@ namespace Enemy
                 case BaseEnemy.EnemyState.MOVE:             //右移動と左移動の切り替え
                     if(tmpEnemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.LEFT)
                     {
-                        tmpEnemy.LightEnemy.enabled = false;
-                        tmpEnemy.LeftEnemy.enabled = true;
+                        tmpEnemy.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = tmpEnemy.LeftEnemy;
                         
                     }
                     else if(tmpEnemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.RIGHT)
                     {
-                        tmpEnemy.LeftEnemy.enabled = false;
-                        tmpEnemy.LightEnemy.enabled = true;
+                        tmpEnemy.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = tmpEnemy.RightEnemy;
                     }
                         break;
                 default:
