@@ -16,18 +16,18 @@ namespace Enemy
                 case BaseEnemy.EnemyState.MOVE:             //右移動と左移動の切り替え
                     if(tmpEnemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.LEFT)
                     {
-                        tmpEnemy.PoliceAnm.Play("LeftMove");
+                        tmpEnemy.transform.eulerAngles = new Vector3(0, 180, 0);
                     }
                     else if(tmpEnemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.RIGHT)
-                        tmpEnemy.PoliceAnm.Play("Default");
+                        tmpEnemy.transform.eulerAngles = new Vector3(0, 0, 0);
                         break;
 
-                case BaseEnemy.EnemyState.ATTACK:           //攻撃アニメーション
-                    if(tmpEnemyPos >= 0)
-                        tmpEnemy.PoliceAnm.Play("RightAttack");
-                    else
-                        tmpEnemy.PoliceAnm.Play("LeftAttack");
-                        break;
+                // case BaseEnemy.EnemyState.ATTACK:           //攻撃アニメーション
+                //     if(tmpEnemyPos >= 0)
+                //         tmpEnemy.PoliceAnm.Play("RightAttack");
+                //     else
+                //         tmpEnemy.PoliceAnm.Play("LeftAttack");
+                //         break;
                 default:
                         break;
 }
