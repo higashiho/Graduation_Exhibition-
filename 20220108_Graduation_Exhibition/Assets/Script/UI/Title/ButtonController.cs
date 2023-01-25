@@ -29,5 +29,10 @@ namespace UI
             var tmpWateTime = Const.WAIT_TIME / 2;
             moveButton.transform.DOScale(Vector3.one, tmpWateTime).SetEase(Ease.InCirc);
         }
+
+        void OnDestroy()
+        {
+            DOTween.KillAll();
+        }
     }
 }
