@@ -49,11 +49,6 @@ namespace Enemy
         [SerializeField]
         protected GameObject rightVision;
         public GameObject RightVision{get{return rightVision;}private set{rightVision = value;}}
-
-        [Header("アニメーション管理")]
-        [SerializeField]
-        protected SimpleAnimation policeAnm;
-        public SimpleAnimation PoliceAnm{get{return policeAnm;}private set{policeAnm = value;}}
         
         [SerializeField, Header("自身のライト")]
         protected Light2D myLight;
@@ -63,8 +58,8 @@ namespace Enemy
         [SerializeField]
         protected BaseBullet bullet; 
 
-        [SerializeField, Header("判定したいオブジェクトのrendererへの参照")]
-        protected SpriteRenderer targetRenderer;
+        [SerializeField]
+        protected SpriteRenderer targetRenderer;    // 判定したいオブジェクトのrendererへの参照
 
         //スクリプト参照
         public EnemyMove MoveEnemy{get; private set;} = new EnemyMove();

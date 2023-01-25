@@ -16,10 +16,10 @@ namespace Enemy
                 case BaseEnemy.EnemyState.MOVE:             //右移動と左移動の切り替え
                     if(tmpEnemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.LEFT)
                     {
-                        tmpEnemy.transform.eulerAngles = new Vector3(0, 180, 0);
+                        tmpEnemy.enabled = true;
                     }
                     else if(tmpEnemy.EnemyMoveFlags == BaseEnemy.EnemyMoveFlag.RIGHT)
-                        tmpEnemy.transform.eulerAngles = new Vector3(0, 0, 0);
+                        tmpEnemy.enabled = true;
                         break;
 
                 // case BaseEnemy.EnemyState.ATTACK:           //攻撃アニメーション

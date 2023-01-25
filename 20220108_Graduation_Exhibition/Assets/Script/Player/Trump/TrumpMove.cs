@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks; 
 using System.Threading;
-using SceneMove;
+using UnityEngine.SceneManagement;
 
 
 namespace Trump
@@ -40,7 +40,7 @@ namespace Trump
         {
             if(tmpTrump.transform.position.y >= Const.GAME_CLEAR_POS_Y)
             {
-                BaseSceneMove.SceneInstance.SceneState |= Const.SCENE_MAIN_GAME_CLEAR;
+                SceneManager.LoadScene("ResultScene");
             }
         }
     }
