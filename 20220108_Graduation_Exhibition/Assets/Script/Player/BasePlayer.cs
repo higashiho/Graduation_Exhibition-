@@ -19,7 +19,8 @@ namespace Player
             MOVE,
             JUMP,
             CHANGE,
-            WARP
+            WARP,
+            RETRY
         }
         [SerializeField]
         protected PlayerState playerStatus = PlayerState.DEFAULT;

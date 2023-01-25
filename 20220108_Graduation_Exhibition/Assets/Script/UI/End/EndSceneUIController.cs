@@ -6,11 +6,12 @@ namespace UI{
     public class EndSceneUIController : BaseUI
     {
         // インスタンス化
-        private ScoreUI scores = new ScoreUI();
+        private EndUIMove uiMove;
         // Start is called before the first frame update
         void Start()
         {
-            scores.PrintScore(this);
+            uiMove = new EndUIMove(this);
+            uiMove.Move();
         }
 
         // Update is called once per frame
