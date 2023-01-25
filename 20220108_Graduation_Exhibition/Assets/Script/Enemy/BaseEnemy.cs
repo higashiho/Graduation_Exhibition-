@@ -63,8 +63,8 @@ namespace Enemy
         [SerializeField]
         protected BaseBullet bullet; 
 
-        [SerializeField]
-        protected SpriteRenderer targetRenderer;    // 判定したいオブジェクトのrendererへの参照
+        [SerializeField, Header("判定したいオブジェクトのrendererへの参照")]
+        protected SpriteRenderer targetRenderer;
 
         //スクリプト参照
         public EnemyMove MoveEnemy{get; private set;} = new EnemyMove();
