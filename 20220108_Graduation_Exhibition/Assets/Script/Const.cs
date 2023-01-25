@@ -56,7 +56,7 @@ public class Const
     // 以上Task用定数
 
     // 以下UI用定数
-    public const float MOVE_TIME = 5.0f;                                        // テキストが動く時間
+    public const float MOVE_TIME = 3.0f;                                        // テキストが動く時間
     public static readonly Vector3 MOVE_TARGET_POS = new Vector3(0, 150, 0);    // テキストの目標座標
     public const float CHARACTER_UP_NAM = 0.2f;                                 // 一回転で増えるCHARACTERの値
     // 以上UI用定数

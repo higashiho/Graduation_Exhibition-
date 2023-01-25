@@ -5046,6 +5046,7 @@ MonoBehaviour:
   - {fileID: 1783004500}
   - {fileID: 1592476917}
   scoreText: {fileID: 0}
+  gameOverText: {fileID: 0}
 --- !u!114 &916335454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6049,6 +6050,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 83485232}
     m_Modifications:
+    - target: {fileID: 499586450, guid: 8cd1b71acb468f341be3d1eed4efc6ec, type: 3}
+      propertyPath: targetRenderer
+      value: 
+      objectReference: {fileID: 1185570417}
     - target: {fileID: 3213448024606909313, guid: 8cd1b71acb468f341be3d1eed4efc6ec, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -6099,6 +6104,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cd1b71acb468f341be3d1eed4efc6ec, type: 3}
+--- !u!212 &1185570417 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2712817982434613838, guid: 8cd1b71acb468f341be3d1eed4efc6ec, type: 3}
+  m_PrefabInstance: {fileID: 1185570416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1220379701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5595472477954124074, guid: 8cd1b71acb468f341be3d1eed4efc6ec, type: 3}

@@ -42,7 +42,12 @@ namespace SceneMove
                 case Const.SCENE_RESULT | Const.SCENE_MAIN_GAME_OVER:
                 case Const.SCENE_RESULT | Const.SCENE_MAIN_GAME_CLEAR:
                     if(Input.GetKeyDown(KeyCode.Return) && tmpScene.FadePanel.color.a == 0)
+                    {
+                        tmpScene.SceneState &= ~ tmpScene.SceneState;
+                        tmpScene.SceneState |= Const.SCENE_RESULT;
                         Fadeout();
+                    }
+
                     fadein();
                     break;
                 default:
@@ -73,6 +78,7 @@ namespace SceneMove
         /// </summary>
         public void Fadeout()
         {   
+            Debug.Log(tmpScene.SceneState);
             tmpScene.FadeoutTween = tmpScene.FadePanel.DOFade(Const.MAX_ALPHA, Const.FADE_TIME).
             SetEase(Ease.Linear).OnStart(() => 
             {
@@ -110,6 +116,7 @@ namespace SceneMove
             }
             
             tmpScene.FadeinTween = null;
+            tmpScene.FadeoutTween = null;
         }
     }
     

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using SceneMove;
 using DG.Tweening;
 using Cysharp.Threading.Tasks; 
@@ -22,33 +23,78 @@ namespace UI
         public async void Move()
         {
             await UniTask.WaitWhile(() => BaseSceneMove.SceneInstance.FadePanel.color.a != 0);
+
             // ゲームCLEARステートがたっていたらスコア表示
             if((BaseSceneMove.SceneInstance.SceneState | Const.SCENE_MAIN_GAME_CLEAR) == Const.SCENE_RESULT)
             {
+
+                if(!tmpUI.ScoreText.transform.parent.gameObject.activeSelf)
+                    tmpUI.ScoreText.transform.parent.gameObject.SetActive(true);
                 tmpUI.ScoreText.text = "" + BaseUI.HaveItem;
-                if(tmpUI.GameOverText.gameObject.activeSelf)
-                    tmpUI.GameOverText.gameObject.SetActive(false);
+
+                await clearTextMove();
             }
             else 
             {
-                if(tmpUI.ScoreText.transform.parent.gameObject.activeSelf)
-                    tmpUI.ScoreText.transform.parent.gameObject.SetActive(false);
-                await textMove();
+                if(!tmpUI.GameOverText.gameObject.activeSelf)
+                    tmpUI.GameOverText.gameObject.SetActive(true);
+                await faileTextMove();
             }
+
+
         }
 
-        private async UniTask textMove()
+        /// <summary>
+        /// 失敗時のテキスト挙動
+        /// </summary>
+        /// <returns></returns>
+        private async UniTask faileTextMove()
         {
-            tmpUI.GameOverText.transform.DOLocalMove(Const.MOVE_TARGET_POS,Const.MOVE_TIME).SetEase(Ease.InQuad);
-            while(true)
+            var tmpTweem = tmpUI.GameOverText.transform.DOLocalMove(Const.MOVE_TARGET_POS,Const.MOVE_TIME).SetEase(Ease.OutBounce);
+
+            // Tweenが終了するまで待つ
+            await tmpTweem.AsyncWaitForCompletion();
+
+            // １秒で100値が増えるループ
+            await characterSpacingMove(tmpUI.GameOverText);
+
+        }
+
+        /// <summary>
+        /// クリア時のテキスト挙動
+        /// </summary>
+        /// <returns></returns>
+        private async UniTask clearTextMove()
+        {
+            // 取得個数テキスト
+            var tmpTween = tmpUI.ScoreText.DOFade(Const.MAX_ALPHA,Const.FADE_TIME).SetEase(Ease.InCirc);
+            await tmpTween.AsyncWaitForCompletion();
+
+            // テキストの子挙動
+            var tmpText = tmpUI.ScoreText.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            tmpText.DOFade(Const.MAX_ALPHA,Const.FADE_TIME).SetEase(Ease.InCirc);
+            await characterSpacingMove(tmpText);
+        }
+
+        /// <summary>
+        /// １秒でcharacterSpacingの値が100増えるループ
+        /// </summary>
+        /// <returns></returns>
+        private async UniTask characterSpacingMove(TextMeshProUGUI tmpTextUI)
+        {
+             while(true)
             {
-                var tmpWidth = tmpUI.GameOverText.characterSpacing;
-                tmpWidth += Const.CHARACTER_UP_NAM;
-                tmpUI.GameOverText.characterSpacing = tmpWidth;
+                // characterSpacingの値を１増やす
+                var tmpWidth = tmpTextUI.characterSpacing;
+                tmpWidth++;
+                tmpTextUI.characterSpacing = tmpWidth;
+
+                // 0.01秒待つ
                 await UniTask.Delay(Const.WAIT_TIME);
                 if(tmpWidth >= 0)
                     break;
             }
         }
+
     }
 }
