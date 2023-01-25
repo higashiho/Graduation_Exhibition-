@@ -63,9 +63,11 @@ namespace Enemy
 
         //右向き左向き
         [SerializeField, Header("右向き")]
-        public Renderer LightEnemy;
+        protected Sprite rightEnemy;
+        public Sprite RightEnemy{get{return rightEnemy;}}
         [SerializeField, Header("左向き")]
-        public Renderer LeftEnemy;
+        protected Sprite leftEnemy;
+        public Sprite LeftEnemy{get{return leftEnemy;}}
         
 
         //スクリプト参照
