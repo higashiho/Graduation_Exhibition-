@@ -63,7 +63,7 @@ namespace Factory
         {
             obj.TimeManage = 0;
             //ゲームオブジェクトを非表示
-            obj.gameObject.SetActive(false);
+            obj?.gameObject.SetActive(false);
         }
 
         // 座標設定関数 第一引数：生成する座標 第二引数：生成されるオブジェクト

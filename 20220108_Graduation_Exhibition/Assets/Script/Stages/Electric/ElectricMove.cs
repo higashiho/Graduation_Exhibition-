@@ -124,7 +124,7 @@ namespace Electric
                     // Topの値を少しずつ減らす
                     tmpPadding.w -= Const.PADDING_UP_NAM;
                     tmpElectric.ElectricUI[i].padding = tmpPadding;
-                    await UniTask.Delay(Const.ELECTRIC_WAIT_TIME);
+                    await UniTask.Delay(Const.WAIT_TIME);
                 }
             }
         }
