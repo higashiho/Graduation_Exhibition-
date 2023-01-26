@@ -10,14 +10,11 @@ namespace Player
 
         [SerializeField]    // 生成するトランプ
         private BaseTrump trump;
-
-        // インスタンス化
-        private PlayerMove movePlayer;
-        private CreateTrump createTrump = new CreateTrump(); 
         // Start is called before the first frame update
         void Start()
         {
             movePlayer = new PlayerMove(InGameSceneController.Player);
+            PlayerRenderer = this.transform.GetChild(2).GetComponent<SpriteRenderer>();
         }
 
         // Update is called once per frame

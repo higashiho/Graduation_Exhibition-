@@ -24,7 +24,7 @@ namespace Trump
             var tmpEnemyPos = tmpEnemy.transform.position;
             
             // 当たり判定
-            var tmpPlayerCol = InGameSceneController.Player.GetComponent<BoxCollider2D>();
+            var tmpPlayerCol = InGameSceneController.Player.PlayerRenderer.GetComponent<BoxCollider2D>();
             // 親の当たり判定と子の当たり判定を取得
             var tmpEnemysCol = tmpEnemy.GetComponent<BoxCollider2D>();                      // 親の当たり判定
             var tmpEnemyCol = tmpEnemy.transform.GetChild(0).GetComponent<BoxCollider2D>(); // 子の当たり判定

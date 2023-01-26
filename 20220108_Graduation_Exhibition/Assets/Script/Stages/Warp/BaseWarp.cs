@@ -18,7 +18,7 @@ namespace Warp
         public bool OnPlayer{get{return onPlayer;}set{onPlayer =value;}}
 
         // インスタンス化
-        protected WarpMove warpMove = new WarpMove();
+        protected WarpMove warpMove;
 
         /// <summary>
         /// ワープできるか確認関数
