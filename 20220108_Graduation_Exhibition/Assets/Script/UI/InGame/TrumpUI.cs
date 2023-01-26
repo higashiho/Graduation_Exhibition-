@@ -8,19 +8,38 @@ namespace UI
     public class TrumpUI
     {
         // UIの挙動
-        public void Move(BaseUI tmpUI)
+        public async void Move(BaseUI tmpUI)
         {
             // プレイヤーがトランプを打ったら再生
-            if(!InGameSceneController.Player.ShotFlag)
+            if(!InGameSceneController.Player.ShotFlag && tmpUI.SliderTask == null)
             {
-                sliderMove(tmpUI);
+                tmpUI.SliderTask = sliderMove(tmpUI);
+
+                await (UniTask)tmpUI.SliderTask;
             }
         }
 
         // UI挙動
-        private void sliderMove(BaseUI tmpUI)
+        private async UniTask sliderMove(BaseUI tmpUI)
         {
-            tmpUI.TrumpSlider.value -= Time.deltaTime;
+            // 最大値の-1（0.01秒で計算しているため0.01かける)
+            var tmpValue = (tmpUI.TrumpSlider.maxValue - 1)  * 0.01f;
+            
+            // トランプのスライダーを初期化
+            tmpUI.TrumpSlider.value = tmpUI.TrumpSlider.maxValue;
+            
+            while(true)
+            {
+                tmpUI.TrumpSlider.value -= tmpValue;
+                await UniTask.Delay(Const.WAIT_TIME);
+
+                if(tmpUI.TrumpSlider.value <= 0)
+                    break;
+            }
+
+            // 初期化
+            tmpUI.SliderTask = null;
+            InGameSceneController.Player.ShotFlag = true;
         }
     }
 }
