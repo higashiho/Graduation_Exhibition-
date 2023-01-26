@@ -3,7 +3,12 @@ guid: 9c50a6a0d1b9bd745bfe67a14fa73663
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - trumpSlider: {instanceID: 0}
+  - trumpData: {fileID: 11400000, guid: 5b04d55b6de008641909e8644d938343, type: 2}
+  - itemsUI: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - gameOverText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

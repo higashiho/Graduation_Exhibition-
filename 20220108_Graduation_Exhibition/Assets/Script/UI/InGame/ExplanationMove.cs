@@ -13,10 +13,7 @@ namespace UI
         {
             var tmpColorBool = false;
             // Playerが指定のposにいる場合徐々に表示
-            if(InGameSceneController.Player.transform.position.y >= Const.EXPLANATION_DISPLAY_POS[0] &&
-                InGameSceneController.Player.transform.position.y <= Const.EXPLANATION_DISPLAY_POS[1] &&
-                InGameSceneController.Player.transform.position.x >= Const.EXPLANATION_DISPLAY_POS[2] &&
-                InGameSceneController.Player.transform.position.x <= Const.EXPLANATION_DISPLAY_POS[3])
+            if(posBool())
             {
                 Debug.Log("in");
                 // 透明度が最大値ではない場合
@@ -31,6 +28,18 @@ namespace UI
             // テキストのアルファ値を更新
             for(int i = 0; i < tmpUI.ExpText.Length; i++)
                 tmpUI.ExpText[i].color = textColor;
+        }
+
+        /// <summary>
+        /// プレイヤーポス言っていない居るか確認bool
+        /// </summary>
+        /// <returns>プレイヤーが一定内にいるか</returns>
+        private bool posBool()
+        {
+            return InGameSceneController.Player.transform.position.y >= Const.EXPLANATION_DISPLAY_POS[0] &&
+                InGameSceneController.Player.transform.position.y <= Const.EXPLANATION_DISPLAY_POS[1] &&
+                InGameSceneController.Player.transform.position.x >= Const.EXPLANATION_DISPLAY_POS[2] &&
+                InGameSceneController.Player.transform.position.x <= Const.EXPLANATION_DISPLAY_POS[3];
         }
     }
 }

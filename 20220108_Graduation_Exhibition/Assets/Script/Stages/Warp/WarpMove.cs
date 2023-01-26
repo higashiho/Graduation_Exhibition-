@@ -58,7 +58,17 @@ namespace Warp
                         // 通常の場合はスタートメカの位置に移動
                         case "WarpMecha":
                             Debug.Log("in");
-                            startWarpMove(tmpMaskPos, InGameSceneController.Player.StartWarpMecha.transform.position);
+                            if(InGameSceneController.Player.StartWarpMecha != null)
+                                startWarpMove(tmpMaskPos, InGameSceneController.Player.StartWarpMecha.transform.position);
+                            // オブジェクトが入っていない場合は初期化して関数終了
+                            else
+                                {
+                                    tmpCol.enabled = true;
+                                    tmpRb.gravityScale = Const.START_GRAVITY_SCALE;
+                                    InGameSceneController.Player.PlauerMask.enabled = false;
+                                    InGameSceneController.Player.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
+                                    return;
+                                }
                             break;
                         default:
                             break;
@@ -99,8 +109,6 @@ namespace Warp
         /// <param name="tmpTargetPos">プレイヤーの目標座標</param>
         private void startWarpMove(Vector3 tmpMaskPos, Vector3 tmpTargetPos)
         {
-            if(tmpMaskPos == null)
-                return;
             InGameSceneController.Player.PlauerMask.enabled = true;
             InGameSceneController.Player.PlauerMask.transform.DOMove(
                 InGameSceneController.Player.transform.position,
