@@ -9,23 +9,36 @@ namespace Warp
 {
     public class WarpMove
     {
+        private BaseWarp tmpWarp;
+        public WarpMove(BaseWarp tmp)
+        {
+            tmpWarp = tmp;
+        }
         /// <summary>
         ///  プレイヤーの挙動Tween
         /// </summary>
         private Tween tmpPlayerTween = null;
 
+        /// <summary>
+        /// ワープできるかフラグ用ブール関数
+        /// </summary>
+        /// <returns></returns>
+        private bool flagBool()
+        {
+            return tmpWarp.OnWarp && 
+            InGameSceneController.Player.PlayerStatus != BasePlayer.PlayerState.WARP && 
+            InGameSceneController.Player.WarpCount != tmpWarp.ElectricsData.MaxElectric &&
+            InGameSceneController.Player.OnGrount;
+        }
 
         /// <summary>
         /// ワープ挙動関数
         /// </summary>
         /// <param name="tmpWarp">ワープの実体</param> 
-        public async void Move(BaseWarp tmpWarp)
+        public async void Move()
         {
             // ワープフラグがある時かつステートがワープじゃないとき
-            if(tmpWarp.OnWarp && 
-            InGameSceneController.Player.PlayerStatus != BasePlayer.PlayerState.WARP && 
-            InGameSceneController.Player.WarpCount != tmpWarp.ElectricsData.MaxElectric
-            )
+            if(flagBool())
             {
                 // 上ボタンを押された時
                 if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -35,7 +48,7 @@ namespace Warp
                     // ワープ回数増加
                     InGameSceneController.Player.WarpCount++;
                     // 当たり判定を削除
-                    var tmpCol = InGameSceneController.Player.GetComponent<BoxCollider2D>();
+                    var tmpCol = InGameSceneController.Player.PlayerRenderer.GetComponent<BoxCollider2D>();
                     var tmpRb = InGameSceneController.Player.GetComponent<Rigidbody2D>();
 
                     tmpCol.enabled = false;

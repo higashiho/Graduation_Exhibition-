@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Warp;
+using Trump;
 using UnityEngine.Rendering.Universal;
 
 
@@ -13,6 +14,8 @@ namespace Player
         [SerializeField]    
         protected PlayerData playerData;
         public PlayerData DataPlayer{get {return playerData;}private set{playerData = value;}}
+        // プレイヤーのスプライトレンダラー
+        public SpriteRenderer PlayerRenderer{get;protected set;}
         public enum PlayerState
         {
             DEFAULT,
@@ -25,6 +28,9 @@ namespace Player
         [SerializeField]
         protected PlayerState playerStatus = PlayerState.DEFAULT;
         public PlayerState PlayerStatus{get{return playerStatus;}set {playerStatus = value;}}
+        // 地面と接地しているか
+        protected bool onGround;
+        public bool OnGrount{get{return onGround;} set{onGround = value;}}
         
         [SerializeField, Header("自身のライト")]
         protected Light2D myLight;
@@ -52,7 +58,17 @@ namespace Player
         [SerializeField]
         protected int warpCount = 0;
         public int WarpCount{get{return warpCount;}set{warpCount = value;}}
+        [SerializeField, Header("右向きプレイヤー")]
+        protected Sprite rightPlayerSprite;
+        public Sprite RightPlayerSprite{get{return rightPlayerSprite;}}
+        [SerializeField, Header("左向きプレイヤー")]
+        protected Sprite leftPlayerSprite;
+        public Sprite LeftPlayerSprite{get{return leftPlayerSprite;}}
+        
 
+        // インスタンス化
+        protected PlayerMove movePlayer;
+        protected CreateTrump createTrump = new CreateTrump(); 
         // 入力関係
         protected void imput()
         {

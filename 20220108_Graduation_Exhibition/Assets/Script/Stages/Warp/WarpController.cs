@@ -9,7 +9,7 @@ namespace Warp
         // Start is called before the first frame update
         void Start()
         {
-            
+            warpMove = new WarpMove(this);
         }
 
         // Update is called once per frame
@@ -19,7 +19,7 @@ namespace Warp
 
             // プレイヤーと接地しているか
             if(OnPlayer)
-                warpMove.Move(this);
+                warpMove.Move();
         }
     }
 }
