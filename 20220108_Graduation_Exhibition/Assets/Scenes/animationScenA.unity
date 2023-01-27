@@ -3049,6 +3049,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+  retryPanel: {fileID: 0}
   myLight: {fileID: 407093140}
 --- !u!58 &1130452664
 CircleCollider2D:
@@ -3316,6 +3317,14 @@ PrefabInstance:
     - target: {fileID: 1805348869955951667, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6667704775114084075, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6667704775114084075, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
@@ -3926,6 +3935,7 @@ MonoBehaviour:
   - {fileID: 339027350}
   - {fileID: 1604886437}
   scoreText: {fileID: 0}
+  gameOverText: {fileID: 0}
 --- !u!114 &1526441831
 MonoBehaviour:
   m_ObjectHideFlags: 0
