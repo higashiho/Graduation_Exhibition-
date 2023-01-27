@@ -4,12 +4,44 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Cysharp.Threading.Tasks; 
+using System.Threading;
+
 
 namespace UI
 {
     public class BaseUI : MonoBehaviour
     {
+        // タスク用
+        public CancellationTokenSource cts{get;private set;} = new CancellationTokenSource();  
+
         [Header("Title")]
+        [SerializeField,Header("生成するダイアモンドイメージ")]
+        protected BaseDiamond diamond;
+        public BaseDiamond Diamond{get{return diamond;}}
+
+        [SerializeField, Header("生成したことのあるダイアモンド:プール用")]
+        protected List<BaseDiamond> diamonds = new List<BaseDiamond>(10);
+        public List<BaseDiamond> Diamonds{get{return diamonds;} set{diamonds = value;}}
+        // マウスがボタンの上にあるか
+        protected bool onButton = false;
+        public bool OnButton{get{return onButton;} set{onButton = value;}}
+
+        [SerializeField, Header("タイトルのイメージ")]
+        protected Image[] titleImage = new Image[7];
+        public Image[] TitleImage{get{return titleImage;}}
+        
+        [SerializeField, Header("ボタン")]
+        protected Button moveButton;
+        public Button MoveButton{get{return moveButton;}}
+
+        [SerializeField,Header("挙動させるイメージ")]
+        protected GameObject moveImage;
+        public GameObject MoveImage{get{return moveImage;}}
+        // 挙動させるイメージの初期座標
+        public Vector3 StartPlayPos{get; protected set;}
+        // インスタンス化
+        protected TitleMove titleMove;
+        protected DiamondMove diamondMove;
         [Header("InGame")]
         [SerializeField, Header("トランプUI")]
         protected Slider trumpSlider;
