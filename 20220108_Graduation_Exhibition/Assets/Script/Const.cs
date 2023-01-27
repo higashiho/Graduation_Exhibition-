@@ -56,9 +56,16 @@ public class Const
     // 以上Task用定数
 
     // 以下UI用定数
-    public const float MOVE_TIME = 3.0f;                                        // テキストが動く時間
-    public static readonly Vector3 MOVE_TARGET_POS = new Vector3(0, 150, 0);    // テキストの目標座標
-    public const float CHARACTER_UP_NAM = 0.2f;                                 // 一回転で増えるCHARACTERの値
-    public const float DIAMOND_EFFECT_EMISSION = 20.0f;                         // エフェクトの出る量初期値 
+    public const float MOVE_TIME = 3.0f;                                                // テキストが動く時間
+    public static readonly Vector3 TEXT_MOVE_TARGET_POS = new Vector3(0, 150, 0);       // テキストの目標座標
+    public const float PLAYER_MOVE_TIME = 10.0f;                                        // プレイヤーの横切る時間
+    public const float PLAYER_MOVE_DELAY = 5.0f;                                        // プレイヤーの待ち時間
+    public const float IMAGE_JUMP_TIME = 1.0f;                                         // タイトルのジャンプ時間
+    public const int PLAYER_JUMP_NUM = 7;                                               // ジャンプ回数
+    public const int IMAGE_JUMP_NUM = 1;                                                // ジャンプ回数
+    public const float PLAYER_JUMP_POWER = 100f;                                        // ジャンプの高さ
+    public const float IMAGE_JUMP_POWER = 200f;                                         // タイトルのジャンプ力
+    public static readonly Vector3 PLAYER_MOVE_TARGET_POS = new Vector3(1750, 230, 0);  // プレイヤーのイメージ目標座標
+    public const float DIAMOND_EFFECT_EMISSION = 20.0f;                                 // エフェクトの出る量初期値 
     // 以上UI用定数
 }

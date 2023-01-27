@@ -8,9 +8,9 @@ using DG.Tweening;
 namespace UI
 {
     /// <summary>
-    /// ボタン管理用スクリプト
+    /// タイトルシーン挙動管理用スクリプト
     /// </summary>
-    public class ButtonController : BaseButton
+    public class TitleSceneUIController : BaseUI
     {
         /// <summary>
         /// ボタンを押したときの処理
@@ -23,16 +23,17 @@ namespace UI
 
         }
 
-        async void Start()
+        void Start()
         {
-            await UniTask.WaitWhile(() => BaseSceneMove.SceneInstance.FadePanel.color.a != 0);
-            var tmpWateTime = Const.WAIT_TIME / 2.5f;
-            moveButton.transform.DOScale(Vector3.one, tmpWateTime).SetEase(Ease.InCirc);
+            StartPlayPos = MoveImage.transform.localPosition;
+            titleMove = new TitleMove(this);
+            titleMove.StartMove();
         }
 
         void OnDestroy()
         {
             DOTween.KillAll();
+            cts?.Cancel();
         }
     }
 }

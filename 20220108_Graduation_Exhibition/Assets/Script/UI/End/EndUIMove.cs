@@ -83,7 +83,7 @@ namespace UI
 
             await tmpTween.AsyncWaitForCompletion();
 
-            tmpTween = tmpUI.GameOverText.transform.parent.transform.DOLocalMove(Const.MOVE_TARGET_POS,Const.MOVE_TIME).SetEase(Ease.OutBounce);
+            tmpTween = tmpUI.GameOverText.transform.parent.transform.DOLocalMove(Const.TEXT_MOVE_TARGET_POS,Const.MOVE_TIME).SetEase(Ease.OutBounce);
 
             // Tweenが終了するまで待つ
             await tmpTween.AsyncWaitForCompletion();
