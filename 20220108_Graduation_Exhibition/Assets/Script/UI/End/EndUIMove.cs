@@ -27,11 +27,11 @@ namespace UI
             // ゲームCLEARステートがたっていたらスコア表示
             if((BaseSceneMove.SceneInstance.SceneState | Const.SCENE_MAIN_GAME_CLEAR) == Const.SCENE_RESULT)
             {
-                await gameOverMove();
+                await gameClearMove();
             }
             else 
             {
-                await gameClearMove();
+                await gameOverMove();
             }
 
             var tmpTween = tmpUI.AktText.DOFade(Const.MAX_ALPHA,Const.FADE_TIME).SetEase(Ease.InSine);
@@ -42,17 +42,14 @@ namespace UI
         }
 
         /// <summary>
-        /// 失敗挙動関数
+        /// 成功挙動関数
         /// </summary>
         /// <returns></returns>
-        private async UniTask gameOverMove()
+        private async UniTask gameClearMove()
         {
 
             if(!tmpUI.ScoreText.transform.parent.gameObject.activeSelf)
-            {
-                tmpUI.Jail.transform.root.parent.gameObject.SetActive(false);
                 tmpUI.ScoreText.transform.parent.gameObject.SetActive(true);
-            }
 
 
             tmpUI.ScoreText.text = "" + BaseUI.HaveItem;
@@ -64,14 +61,15 @@ namespace UI
         }
 
         /// <summary>
-        /// 成功挙動関数
+        /// 失敗挙動関数
         /// </summary>
         /// <returns></returns>
-        private async UniTask gameClearMove()
+        private async UniTask gameOverMove()
         {
 
-            if(!tmpUI.GameOverText.gameObject.activeSelf)
-                tmpUI.GameOverText.transform.parent.gameObject.SetActive(true);
+            if(!tmpUI.Jail.transform.parent.gameObject.activeSelf)
+                tmpUI.Jail.transform.parent.gameObject.SetActive(true);
+
             await faileTextMove();
         }
 
