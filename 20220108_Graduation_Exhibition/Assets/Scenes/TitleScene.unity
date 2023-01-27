@@ -1016,7 +1016,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1056,6 +1056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad65c2220f08a047a8b047640b74527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diamond: {fileID: -3452509639697817741, guid: fa8f999ae3d84e64fa6a5b6b7cf6f613, type: 3}
+  diamonds: []
   titleImage:
   - {fileID: 974216087}
   - {fileID: 1149486228}
@@ -2029,6 +2031,7 @@ GameObject:
   - component: {fileID: 1313290873}
   - component: {fileID: 1313290872}
   - component: {fileID: 1313290871}
+  - component: {fileID: 1313290874}
   m_Layer: 5
   m_Name: GameStart
   m_TagString: Untagged
@@ -2150,6 +2153,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313290869}
   m_CullTransparentMesh: 1
+--- !u!114 &1313290874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313290869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 752520628}
+          m_TargetAssemblyTypeName: UI.TitleSceneUIController, Assembly-CSharp
+          m_MethodName: ExitEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 752520628}
+          m_TargetAssemblyTypeName: UI.TitleSceneUIController, Assembly-CSharp
+          m_MethodName: EnterEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1347240338
 GameObject:
   m_ObjectHideFlags: 0

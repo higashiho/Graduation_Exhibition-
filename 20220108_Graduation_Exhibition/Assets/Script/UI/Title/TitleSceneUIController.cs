@@ -22,12 +22,37 @@ namespace UI
                 SceneMoveController.SceneInstance.TmpSceneMove.Fadeout();
 
         }
+        /// <summary>
+        /// マウスが離れたときのイベント
+        /// </summary>
+        public void ExitEvent()
+        {
+             // フラグが立っているときは折る
+            if(OnButton)
+                OnButton = false;
+            
+        }
 
+        /// <summary>
+        /// マウスが乗った時のイベント
+        /// </summary>
+        public void EnterEvent()
+        {
+            // フラグがたっていないときは立てる
+            if(!OnButton)
+                OnButton = true;
+        }
         void Start()
         {
             StartPlayPos = MoveImage.transform.localPosition;
             titleMove = new TitleMove(this);
+            diamondMove = new DiamondMove(this);
             titleMove.StartMove();
+        }
+
+        void Update()
+        {
+            diamondMove.Move();
         }
 
         void OnDestroy()
