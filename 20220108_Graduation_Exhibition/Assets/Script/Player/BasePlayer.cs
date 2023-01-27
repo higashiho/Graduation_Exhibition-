@@ -66,5 +66,24 @@ namespace Player
                 playerStatus = PlayerState.JUMP;
             
         }
+
+        //プレイヤーがどっちを向いているか
+        public enum PlayerMoveFlag
+        {
+            DEFAULT,
+            RIGHT,
+            LEFT,
+        }
+        [SerializeField]
+        protected PlayerMoveFlag playerMoveFlag = PlayerMoveFlag.DEFAULT;
+        public PlayerMoveFlag PlayerMoveFlags{get {return playerMoveFlag;}set {playerMoveFlag = value;}}
+
+        //右向き左向き
+        [SerializeField, Header("右向き")]
+        protected Sprite rightPlayer;
+        public Sprite RightPlayer{get{return rightPlayer;}}
+        [SerializeField, Header("左向き")]
+        protected Sprite leftPlayer;
+        public Sprite LeftPlayer{get{return leftPlayer;}}
     }
 }
