@@ -65,6 +65,7 @@ public class Const
     public const int IMAGE_JUMP_NUM = 1;                                                // ジャンプ回数
     public const float PLAYER_JUMP_POWER = 100f;                                        // ジャンプの高さ
     public const float IMAGE_JUMP_POWER = 200f;                                         // タイトルのジャンプ力
+    public const float MIN_MAX_ANGLE = 180.0f;                                          // アングルの最大値と最小値
     public static readonly Vector3 PLAYER_MOVE_TARGET_POS = new Vector3(1750, 230, 0);  // プレイヤーのイメージ目標座標
     public const float DIAMOND_EFFECT_EMISSION = 20.0f;                                 // エフェクトの出る量初期値 
     // 以上UI用定数

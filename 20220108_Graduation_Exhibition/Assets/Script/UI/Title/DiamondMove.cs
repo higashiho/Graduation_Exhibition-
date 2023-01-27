@@ -37,17 +37,22 @@ namespace UI
                     if(!tmp.gameObject.activeSelf)
                     {
                         tmpObj = tmp;
-                        tmpObj.gameObject.SetActive(true);
                         tmpObj.transform.position = mousePosition;
                     }
                 }
                 if(tmpObj == null)
                 {
                     // 代入生成
-                    tmpUI.Diamonds.Add(MonoBehaviour.Instantiate
+                    tmpObj = MonoBehaviour.Instantiate
                     (tmpUI.Diamond, mousePosition,
-                    Quaternion.identity,tmpUI.transform));
+                    Quaternion.identity,tmpUI.transform);
+                    tmpUI.Diamonds.Add(tmpObj);
                 }
+
+                // 向きをランダムに変換して描画
+                tmpObj.transform.localEulerAngles = new Vector3(0,0,UnityEngine.Random.Range(-Const.MIN_MAX_ANGLE, Const.MIN_MAX_ANGLE));
+                if(!tmpObj.gameObject.activeSelf)
+                    tmpObj.gameObject.SetActive(true);
             }
         }   
     }
