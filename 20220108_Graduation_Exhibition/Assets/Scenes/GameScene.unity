@@ -4933,6 +4933,7 @@ MonoBehaviour:
   - {fileID: 1592476917}
   scoreText: {fileID: 0}
   gameOverText: {fileID: 0}
+  jail: {fileID: 0}
 --- !u!114 &916335454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6402,7 +6403,7 @@ Transform:
   m_GameObject: {fileID: 1505993876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10.249168, y: 15.593319, z: 0.0017165021}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1460825925}
@@ -7607,8 +7608,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 699551597, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 88fe905cf34981b41915c90c638c1462, type: 3}
+    - target: {fileID: 699551597, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
       propertyPath: m_MaskInteraction
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 699551597, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 903649991, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
       propertyPath: m_LocalScale.y
@@ -7682,6 +7691,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1805348869955951666, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
+      propertyPath: rightPlayerSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 88fe905cf34981b41915c90c638c1462, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
 --- !u!1001 &2918443897883672319

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace UI{
     public class EndSceneUIController : BaseUI
@@ -14,9 +15,9 @@ namespace UI{
             uiMove.Move();
         }
 
-        // Update is called once per frame
-        void Update()
+        void OnDestroy()
         {
+            DOTween.KillAll();
         }
     }
 }

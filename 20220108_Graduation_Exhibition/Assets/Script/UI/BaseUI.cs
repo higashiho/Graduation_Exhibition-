@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using Cysharp.Threading.Tasks; 
 
-
 namespace UI
 {
     public class BaseUI : MonoBehaviour
@@ -47,7 +46,15 @@ namespace UI
         [SerializeField, Header("ゲームオーバーテキスト")]
         protected TextMeshProUGUI gameOverText;
         public TextMeshProUGUI  GameOverText{get{return gameOverText;}}
+        [SerializeField,Header("鉄格子")]
+        protected RawImage jail;
+        public RawImage Jail{get{return jail;}}
+        [SerializeField, Header("ダイアモンドのエフェクト")]
+        protected ParticleSystem diamondEfect;
+        public ParticleSystem DiamondEfect{get{return diamondEfect;} set{diamondEfect = value;}}
         
-        
+        [SerializeField, Header("アクトテキスト")]
+        protected TextMeshProUGUI aktText;
+        public TextMeshProUGUI AktText{get{return aktText;}}
     }
 }
