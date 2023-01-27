@@ -27,21 +27,50 @@ namespace UI
             // ゲームCLEARステートがたっていたらスコア表示
             if((BaseSceneMove.SceneInstance.SceneState | Const.SCENE_MAIN_GAME_CLEAR) == Const.SCENE_RESULT)
             {
-
-                if(!tmpUI.ScoreText.transform.parent.gameObject.activeSelf)
-                    tmpUI.ScoreText.transform.parent.gameObject.SetActive(true);
-                tmpUI.ScoreText.text = "" + BaseUI.HaveItem;
-
-                await clearTextMove();
+                await gameClearMove();
             }
             else 
             {
-                if(!tmpUI.GameOverText.gameObject.activeSelf)
-                    tmpUI.GameOverText.gameObject.SetActive(true);
-                await faileTextMove();
+                await gameOverMove();
             }
 
+            var tmpTween = tmpUI.AktText.DOFade(Const.MAX_ALPHA,Const.FADE_TIME).SetEase(Ease.InSine);
 
+            await tmpTween.AsyncWaitForCompletion();
+
+            await characterSpacingMove(tmpUI.AktText);
+        }
+
+        /// <summary>
+        /// 成功挙動関数
+        /// </summary>
+        /// <returns></returns>
+        private async UniTask gameClearMove()
+        {
+
+            if(!tmpUI.ScoreText.transform.parent.gameObject.activeSelf)
+                tmpUI.ScoreText.transform.parent.gameObject.SetActive(true);
+
+
+            tmpUI.ScoreText.text = "" + BaseUI.HaveItem;
+            var tmpEmission = tmpUI.DiamondEfect.emission;
+            tmpEmission.rateOverTime = Const.DIAMOND_EFFECT_EMISSION * BaseUI.HaveItem;
+            tmpUI.DiamondEfect.Play();
+
+            await clearTextMove();
+        }
+
+        /// <summary>
+        /// 失敗挙動関数
+        /// </summary>
+        /// <returns></returns>
+        private async UniTask gameOverMove()
+        {
+
+            if(!tmpUI.Jail.transform.parent.gameObject.activeSelf)
+                tmpUI.Jail.transform.parent.gameObject.SetActive(true);
+
+            await faileTextMove();
         }
 
         /// <summary>
@@ -50,10 +79,14 @@ namespace UI
         /// <returns></returns>
         private async UniTask faileTextMove()
         {
-            var tmpTweem = tmpUI.GameOverText.transform.DOLocalMove(Const.MOVE_TARGET_POS,Const.MOVE_TIME).SetEase(Ease.OutBounce);
+            var tmpTween = tmpUI.Jail.transform.DOLocalMove(Vector3.zero,Const.MOVE_TIME).SetEase(Ease.OutBounce);
+
+            await tmpTween.AsyncWaitForCompletion();
+
+            tmpTween = tmpUI.GameOverText.transform.parent.transform.DOLocalMove(Const.MOVE_TARGET_POS,Const.MOVE_TIME).SetEase(Ease.OutBounce);
 
             // Tweenが終了するまで待つ
-            await tmpTweem.AsyncWaitForCompletion();
+            await tmpTween.AsyncWaitForCompletion();
 
             // １秒で100値が増えるループ
             await characterSpacingMove(tmpUI.GameOverText);

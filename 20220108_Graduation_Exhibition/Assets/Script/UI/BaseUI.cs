@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Cysharp.Threading.Tasks; 
 
 namespace UI
 {
@@ -13,6 +14,12 @@ namespace UI
         [SerializeField, Header("トランプUI")]
         protected Slider trumpSlider;
         public Slider TrumpSlider{get{return trumpSlider;}}
+        [SerializeField, Header("トランプのUI")]
+        protected TrumpData trumpData;
+
+        // スライダー用タスク
+        protected UniTask? sliderTask;
+        public UniTask? SliderTask{get{return sliderTask;}set {sliderTask = value;}}
         [SerializeField, Header("アイテムのUI")]
         protected Text itemsUI;
         public Text ItemsUI{get {return itemsUI;}}
@@ -39,7 +46,15 @@ namespace UI
         [SerializeField, Header("ゲームオーバーテキスト")]
         protected TextMeshProUGUI gameOverText;
         public TextMeshProUGUI  GameOverText{get{return gameOverText;}}
+        [SerializeField,Header("鉄格子")]
+        protected RawImage jail;
+        public RawImage Jail{get{return jail;}}
+        [SerializeField, Header("ダイアモンドのエフェクト")]
+        protected ParticleSystem diamondEfect;
+        public ParticleSystem DiamondEfect{get{return diamondEfect;} set{diamondEfect = value;}}
         
-        
+        [SerializeField, Header("アクトテキスト")]
+        protected TextMeshProUGUI aktText;
+        public TextMeshProUGUI AktText{get{return aktText;}}
     }
 }

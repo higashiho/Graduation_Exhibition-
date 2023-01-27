@@ -27,6 +27,10 @@ namespace Player
                 col.gameObject.SetActive(false);
                 BaseUI.HaveItem++;
             }
+            if(col.gameObject.tag == "Wall" && !player.OnGrount)
+            {
+                player.OnGrount = true;
+            }
         }
         private void OnTriggerEnter2D(Collider2D other) 
         {
@@ -66,6 +70,14 @@ namespace Player
             if(other.gameObject.tag == "WarpMecha")
             {
                     other.GetComponent<BaseWarp>().OnPlayer = false;
+            }
+        }
+        private void OnCollisionExit2D(Collision2D other) 
+        {
+            
+            if(other.gameObject.tag == "Wall" && player.OnGrount)
+            {
+                player.OnGrount = false;
             }
         }
     }

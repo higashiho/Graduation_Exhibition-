@@ -9,5 +9,8 @@ namespace UI
     {
         [SerializeField, Header("ボタン")]
         protected Button moveButton;
+
+        [SerializeField,Header("挙動させるイメージ")]
+        protected Image moveImage;
     }
 }

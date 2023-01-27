@@ -15,6 +15,7 @@ namespace UI
         // Start is called before the first frame update
         void Start()
         {
+            trumpSlider.maxValue = trumpData.ShotTime;
             itemUI.FindItems(this);
         }
 

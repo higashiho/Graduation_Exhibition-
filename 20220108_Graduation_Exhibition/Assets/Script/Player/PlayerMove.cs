@@ -24,12 +24,12 @@ namespace Player
             if(Input.GetKey(KeyCode.A) ||Input.GetKey(KeyCode.LeftArrow))
             {
                 pos.x -= tmpPlayer.DataPlayer.PlayerSpeed * Time.deltaTime;
-                tmpPlayer.PlayerMoveFlags = BasePlayer.PlayerMoveFlag.LEFT;
+                tmpPlayer.PlayerRenderer.sprite = tmpPlayer.LeftPlayerSprite;
             }
             else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 pos.x += tmpPlayer.DataPlayer.PlayerSpeed * Time.deltaTime;
-                tmpPlayer.PlayerMoveFlags = BasePlayer.PlayerMoveFlag.RIGHT;
+                tmpPlayer.PlayerRenderer.sprite = tmpPlayer.RightPlayerSprite;
             }
             // 何もキーが押されていない場合はステート初期化
             else
@@ -40,27 +40,16 @@ namespace Player
         
         // ジャンプ挙動
         // 第一引数：動かすオブジェクト　第二引数：オブジェクトのデータ
-        public async void Jump()
+        public void Jump()
         {
-            // フラグがたってない場合
-            if(!tmpPlayer.DataPlayer.JumpFlag)
+            // 地面と接地している場合
+            if(tmpPlayer.OnGrount)
             {
-                tmpPlayer.DataPlayer.JumpFlag = true;
                 tmpPlayer.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, tmpPlayer.DataPlayer.PlayerJumpPower, 0));
-                // 1秒後にフラグを折る
-                await jumpCoolTime();
 
                 // ステート初期化
                 tmpPlayer.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
             }
-        }
-        
-        // 一秒後にジャンプフラグを折る
-        private async UniTask jumpCoolTime()  
-        {
-            await UniTask.Delay(tmpPlayer.DataPlayer.JunpFlagTimer * Const.CHANGE_SECOND);  
-            tmpPlayer.DataPlayer.JumpFlag = false;
-            Debug.Log("Unitask完了");  
         }
     }
 }
