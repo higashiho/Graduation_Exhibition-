@@ -22,10 +22,15 @@ namespace Player
             var pos = new Vector3();
 
             if(Input.GetKey(KeyCode.A) ||Input.GetKey(KeyCode.LeftArrow))
+            {
                 pos.x -= tmpPlayer.DataPlayer.PlayerSpeed * Time.deltaTime;
-
+                tmpPlayer.PlayerMoveFlags = BasePlayer.PlayerMoveFlag.LEFT;
+            }
             else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
                 pos.x += tmpPlayer.DataPlayer.PlayerSpeed * Time.deltaTime;
+                tmpPlayer.PlayerMoveFlags = BasePlayer.PlayerMoveFlag.RIGHT;
+            }
             // 何もキーが押されていない場合はステート初期化
             else
                 tmpPlayer.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
