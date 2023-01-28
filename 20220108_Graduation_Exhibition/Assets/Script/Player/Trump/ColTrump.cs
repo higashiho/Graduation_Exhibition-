@@ -64,10 +64,12 @@ namespace Trump
         {
             
             // (ChangeTimer)秒間かけて指定座標に移動
+            // エネミーの位置変更
             tmpEnemy.transform.DOMove(tmpPlayerPos, InGameSceneController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
             {
                 Debug.Log("OnComplete!");
             });
+            // プレイヤーの位置変更
             var playerTween = InGameSceneController.Player.transform.DOMove(tmpEnemyPos, InGameSceneController.Player.DataPlayer.ChangeTimer).SetEase(Ease.Flash).OnComplete(() =>
             {
                 Debug.Log("OnComplete!");
@@ -103,9 +105,13 @@ namespace Trump
                 // 位置変更
                 changePos(col);
 
-                // 非同期をキャンセルしてプールに格納
-                trump.cts.Cancel();
-                trump.objectPoolCallBack?.Invoke(trump);
+                
+            // 位置変更音
+            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.Change);
+
+            // 非同期をキャンセルしてプールに格納
+            trump.cts.Cancel();
+            trump.objectPoolCallBack?.Invoke(trump);
             }
         }
     }

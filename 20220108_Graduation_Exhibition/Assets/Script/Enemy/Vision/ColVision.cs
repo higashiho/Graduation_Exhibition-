@@ -24,6 +24,8 @@ namespace Vision
         private void Detection()
         {
             enemy.EnemysStatus = BaseEnemy.EnemyState.ATTACK;
+            //エネミーがプレイヤー見つけた時の音
+            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.EnemyFound);
         }
     }
 }

@@ -79,9 +79,12 @@ namespace UI
         /// <returns></returns>
         private async UniTask faileTextMove()
         {
+            // 鉄格子が閉まる
             var tmpTween = tmpUI.Jail.transform.DOLocalMove(Vector3.zero,Const.MOVE_TIME).SetEase(Ease.OutBounce);
 
             await tmpTween.AsyncWaitForCompletion();
+             // 鉄格子が閉まる音
+            //InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.GameOverCloseDore);
 
             tmpTween = tmpUI.GameOverText.transform.parent.transform.DOLocalMove(Const.TEXT_MOVE_TARGET_POS,Const.MOVE_TIME).SetEase(Ease.OutBounce);
 

@@ -7,7 +7,7 @@ using UI;
 using Enemy;
 using EnemyLight;
 using DG.Tweening;
-
+using Audio;
 
 public class InGameSceneController : MonoBehaviour
 {
@@ -26,8 +26,7 @@ public class InGameSceneController : MonoBehaviour
     public static FactoryBullet BulletObjectPool{get;private set;}
     public static FactoryTrump TrumpObjectPool{get;private set;}
 
-    public static AudioSource audioSource{get; private set;}
-
+    public static BaseAudio AudioInstance{get; private set;}
     void Awake()
     {
         UI = GameObject.FindWithTag("UI").GetComponent<BaseUI>();
@@ -35,7 +34,7 @@ public class InGameSceneController : MonoBehaviour
         BulletObjectPool = GameObject.FindWithTag("Factory").GetComponent<FactoryBullet>();
         TrumpObjectPool = GameObject.FindWithTag("Factory").GetComponent<FactoryTrump>();
         enemys = GameObject.FindGameObjectsWithTag("Enemy");
-        audioSource = GameObject.FindWithTag("AudioSource").GetComponent<AudioSource>();
+        AudioInstance = GameObject.Find("Audio Source").GetComponent<AudioController>();
 
         for(int i = 0; i < enemys.Length; i++)
         {

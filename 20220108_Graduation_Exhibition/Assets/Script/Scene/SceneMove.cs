@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
-using Audio;
 
 namespace SceneMove
 {
@@ -99,7 +98,6 @@ namespace SceneMove
                 // フラグを折って次のステートを入れる
                 tmpScene.SceneState &= ~tmpScene.SceneState;
                 tmpScene.SceneState |= Const.SCENE_MAIN;
-                InGameSceneController.audioSource.Play();
             }
             else if(tmpScene.SceneState == Const.SCENE_RESULT)
             {
@@ -118,6 +116,9 @@ namespace SceneMove
             
             tmpScene.FadeinTween = null;
             tmpScene.FadeoutTween = null;
+            //ゲームオーバーBGM
+            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.GameOverBGM);
+            //InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.GameOverCloseDore);
         }
     }
     

@@ -6,25 +6,29 @@ namespace Audio
 {
     public class BaseAudio : MonoBehaviour
     {
+        public AudioSource audioSource;
+        public AudioSource PlayerAoudio;
         // メインシーンBGM
-        public AudioSource MainBGM;
+        public AudioClip MainBGM;
         // プレイヤー移動音
-        public AudioSource PalyerMove;
+        public AudioClip MovePlayer;
         // トランプを投げる音
-        public AudioSource ThrowTramp;
+        public AudioClip ThrowTramp;
         //トランプが飛んでいく音
-        public AudioSource MoveTramp;
+        public AudioClip MoveTramp;
         //エネミー発見音
-        public AudioSource EnemyFound;
+        public AudioClip EnemyFound;
         //エネミー攻撃音
-        public AudioSource EnemyAttack;
+        public AudioClip EnemyAttack;
         //プレイヤーがエネミーに見つかる音
-        public AudioSource Fiald;
+        public AudioClip Fiald;
         //ゲームオーバーシーンBGM
-        public AudioSource GameOverBGM;
+        public AudioClip GameOverBGM;
         //鉄格子が閉まっている音
-        public AudioSource GameOverCloseDore;
+        public AudioClip GameOverCloseDore;
         //鉄格子が閉まり切った音
-        public AudioSource ClosingDore;
+        public AudioClip ClosingDore;
+        //入れ替わり音
+        public AudioClip Change;
     }
 }

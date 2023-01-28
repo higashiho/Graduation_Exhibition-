@@ -28,6 +28,9 @@ namespace Trump
                 // 向きの生成（Z成分の除去と正規化）
                 clone.ShotForward = Vector3.Scale((mouseWorldPos - tmpObj.transform.position), new Vector3(1, 1, 0)).normalized;
 
+                //トランプ投げる音再生
+                InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.ThrowTramp);
+
                 // トランプの挙動
                 moveTrump.Move(clone);
             }

@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cysharp.Threading.Tasks; 
+using Cysharp.Threading.Tasks;
+using Audio;
 
 
 
@@ -23,18 +24,24 @@ namespace Player
 
             if(Input.GetKey(KeyCode.A) ||Input.GetKey(KeyCode.LeftArrow))
             {
+                if(!InGameSceneController.AudioInstance.PlayerAoudio.isPlaying)
+                    InGameSceneController.AudioInstance.PlayerAoudio.PlayOneShot(InGameSceneController.AudioInstance.MovePlayer);
                 pos.x -= tmpPlayer.DataPlayer.PlayerSpeed * Time.deltaTime;
                 tmpPlayer.PlayerRenderer.sprite = tmpPlayer.LeftPlayerSprite;
             }
             else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
+                if(!InGameSceneController.AudioInstance.PlayerAoudio.isPlaying)
+                    InGameSceneController.AudioInstance.PlayerAoudio.PlayOneShot(InGameSceneController.AudioInstance.MovePlayer);
                 pos.x += tmpPlayer.DataPlayer.PlayerSpeed * Time.deltaTime;
                 tmpPlayer.PlayerRenderer.sprite = tmpPlayer.RightPlayerSprite;
             }
             // 何もキーが押されていない場合はステート初期化
             else
+            {
                 tmpPlayer.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
-
+                //InGameSceneController.AudioInstance.PlayerAoudio.Stop();
+            }
             tmpPlayer.gameObject.transform.position += pos;
         }
         

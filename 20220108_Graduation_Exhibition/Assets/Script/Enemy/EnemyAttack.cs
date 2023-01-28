@@ -13,6 +13,8 @@ namespace Enemy
         {
             // 弾生成
             CreatBullet.BulletCreate.Move(tmpEnemy, tmpBullet);
+            //エネミー攻撃音   
+            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.EnemyAttack);
 
             // 視界削除
             // 非アクティブ確認

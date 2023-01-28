@@ -61,6 +61,8 @@ namespace Factory
         // 回収処理　第一引数：格納するList 第二引数：回収されるオブジェクト
         public static void Collect(BaseTrump obj)
         {
+            //トランプを飛んでいく音を止める
+            //InGameSceneController.AudioInstance.audioSource.Stop();
             //ゲームオブジェクトを非表示
             obj?.gameObject.SetActive(false);
         }

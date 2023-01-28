@@ -15,6 +15,10 @@ namespace Trump
         {
             // 弾に速度を与える
             tmpTrump.GetComponent<Rigidbody2D>().velocity = tmpTrump.ShotForward * tmpTrump.TrumpsData.TrumpSpeed;
+
+            //トランプ飛んでいく音
+            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.MoveTramp);
+
         }
 
         // 指定秒後にキャンセルが要求されていなければプールに格納
