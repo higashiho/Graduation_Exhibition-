@@ -105,9 +105,13 @@ namespace SceneMove
                 // フラグを折って次のステートを入れる
                 tmpScene.SceneState &= ~tmpScene.SceneState;
                 tmpScene.SceneState |= Const.SCENE_TITLE;
+                
             }
             else 
             {
+                // 音を止める
+                InGameSceneController.AudioInstance.audioSource.Stop();
+                InGameSceneController.AudioInstance.PlayerAoudio.Stop();
                 SceneManager.LoadScene("ResultScene");
                 // メインステートフラグのみ折って次のステートを入れる
                 tmpScene.SceneState &= ~Const.SCENE_MAIN;
@@ -116,8 +120,9 @@ namespace SceneMove
             
             tmpScene.FadeinTween = null;
             tmpScene.FadeoutTween = null;
+            
+
             //ゲームオーバーBGM
-            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.GameOverBGM);
             //InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.GameOverCloseDore);
         }
     }
