@@ -4,6 +4,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks; 
 using Player;
 using UI;
+using Audio;
 
 namespace Trump
 {
@@ -29,7 +30,7 @@ namespace Trump
                 clone.ShotForward = Vector3.Scale((mouseWorldPos - tmpObj.transform.position), new Vector3(1, 1, 0)).normalized;
 
                 //トランプ投げる音再生
-                InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.ThrowTramp);
+                BaseAudio.audioSource.PlayOneShot(InGameSceneController.AudioInstance.ThrowTramp);
 
                 // トランプの挙動
                 moveTrump.Move(clone);

@@ -4,7 +4,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks; 
 using System.Threading;
 using Enemy;
-
+using Audio;
 
 namespace Bullet
 {
@@ -22,6 +22,8 @@ namespace Bullet
         {
             if(shotFlag)
             {
+                //エネミー攻撃音   
+                //BaseAudio.audioSource.PlayOneShot(InGameSceneController.AudioInstance.EnemyAttack);
                 shotFlag = false;
                 // 生成
                 BaseBullet clone = InGameSceneController.BulletObjectPool.Launch(tmpObj.transform.position, InGameSceneController.BulletObjectPool.BulletList, tmpBulet);

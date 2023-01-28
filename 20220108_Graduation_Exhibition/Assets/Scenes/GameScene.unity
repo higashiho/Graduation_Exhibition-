@@ -7307,6 +7307,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 504140756493492638, guid: 5d102c4e9b13b174494d00c15c633695, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d102c4e9b13b174494d00c15c633695, type: 3}
 --- !u!1001 &1805348870223950108
@@ -7324,6 +7328,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 88fe905cf34981b41915c90c638c1462, type: 3}
+    - target: {fileID: 699551597, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 699551597, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
       propertyPath: m_MaskInteraction
       value: 2
@@ -7370,7 +7378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1805348869955951660, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.44
       objectReference: {fileID: 0}
     - target: {fileID: 1805348869955951660, guid: 6b804e7570ce8d04db3b3aac23a5a786, type: 3}
       propertyPath: m_LocalRotation.w

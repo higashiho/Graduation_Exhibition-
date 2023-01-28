@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Audio;
 
 
 namespace Enemy
@@ -38,11 +39,10 @@ namespace Enemy
 
                 // 攻撃挙動
                 case EnemyState.ATTACK:
-                    InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.Fiald);
                     attackEnemy.Attack(this, bullet);
                     if(!targetRenderer.isVisible)
                     // 画面外に出たらステート初期化
-                    moveEnemy.StatusReset(this);
+                        moveEnemy.StatusReset(this);
 
                     break;
                 // プレイヤーとの座標変更時

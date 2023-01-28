@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bullet;
+using Audio;
 
 
 namespace Enemy
@@ -13,8 +14,6 @@ namespace Enemy
         {
             // 弾生成
             CreatBullet.BulletCreate.Move(tmpEnemy, tmpBullet);
-            //エネミー攻撃音   
-            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.EnemyAttack);
 
             // 視界削除
             // 非アクティブ確認

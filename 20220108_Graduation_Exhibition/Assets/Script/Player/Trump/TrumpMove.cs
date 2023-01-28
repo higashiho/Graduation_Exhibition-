@@ -4,6 +4,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks; 
 using System.Threading;
 using SceneMove;
+using Audio;
 
 
 namespace Trump
@@ -17,7 +18,7 @@ namespace Trump
             tmpTrump.GetComponent<Rigidbody2D>().velocity = tmpTrump.ShotForward * tmpTrump.TrumpsData.TrumpSpeed;
 
             //トランプ飛んでいく音
-            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.MoveTramp);
+            BaseAudio.audioSource.PlayOneShot(InGameSceneController.AudioInstance.MoveTramp);
 
         }
 

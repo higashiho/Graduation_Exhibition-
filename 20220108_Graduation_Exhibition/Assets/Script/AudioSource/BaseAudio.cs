@@ -6,8 +6,8 @@ namespace Audio
 {
     public class BaseAudio : MonoBehaviour
     {
-        public AudioSource audioSource;
-        public AudioSource PlayerAoudio;
+        public static AudioSource audioSource{get; protected set;}
+        public static AudioSource PlayerAoudio{get;protected set;}
         // メインシーンBGM
         public AudioClip MainBGM;
         // プレイヤー移動音

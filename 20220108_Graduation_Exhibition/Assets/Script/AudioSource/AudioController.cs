@@ -9,7 +9,7 @@ namespace Audio
         // Start is called before the first frame update
         void Start()
         {
-            audioSource = GetComponent<AudioSource>();
+            audioSource = this.GetComponent<AudioSource>();
             PlayerAoudio = this.transform.GetChild(0).GetComponent<AudioSource>();
         }
 

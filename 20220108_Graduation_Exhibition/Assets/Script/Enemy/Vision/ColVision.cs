@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enemy;
+using Audio;
 
 
 namespace Vision
@@ -25,7 +26,8 @@ namespace Vision
         {
             enemy.EnemysStatus = BaseEnemy.EnemyState.ATTACK;
             //エネミーがプレイヤー見つけた時の音
-            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.EnemyFound);
+            BaseAudio.audioSource.PlayOneShot(InGameSceneController.AudioInstance.Fiald);
+            BaseAudio.audioSource.PlayOneShot(InGameSceneController.AudioInstance.EnemyFound);
         }
     }
 }

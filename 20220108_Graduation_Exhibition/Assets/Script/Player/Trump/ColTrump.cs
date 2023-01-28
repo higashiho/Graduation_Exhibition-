@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Enemy;
 using Player;
+using Audio;
 
 
 namespace Trump
@@ -107,7 +108,7 @@ namespace Trump
 
                 
             // 位置変更音
-            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.Change);
+            BaseAudio.audioSource.PlayOneShot(InGameSceneController.AudioInstance.Change);
 
             // 非同期をキャンセルしてプールに格納
             trump.cts.Cancel();

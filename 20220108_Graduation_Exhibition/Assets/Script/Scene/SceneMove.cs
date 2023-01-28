@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Audio;
 
 namespace SceneMove
 {
@@ -27,34 +28,39 @@ namespace SceneMove
 
             switch(tmpScene.SceneState)
             {
+                // ステートがタイトルのみ立っているとき
                 case Const.SCENE_TITLE:
                     fadein();
                     break;
+                // ステートがメインのみ立っているとき
                 case Const.SCENE_MAIN:
                     fadein();
                     break;
+                // ステートがメインかつゲームCLEARがたっているとき
                 case Const.SCENE_MAIN | Const.SCENE_MAIN_GAME_CLEAR:
                     Debug.Log("SCENE_MAIN_GAME_CLEAR");
                     Fadeout();
                     break;
+                // ステートがメインかつゲームオーバーがたっているとき
                 case Const.SCENE_MAIN | Const.SCENE_MAIN_GAME_OVER:
                     Debug.Log("SCENE_MAIN_GAME_OVER");
                     Fadeout();
                     break;
+                // ステートがリザルトかつゲームオーバーかクリアがたっているとき
                 case Const.SCENE_RESULT | Const.SCENE_MAIN_GAME_OVER:
                 case Const.SCENE_RESULT | Const.SCENE_MAIN_GAME_CLEAR:
+                    // エンターキーをフェイドインが終わっている状態で押された時
                     if(Input.GetKeyDown(KeyCode.Return) && tmpScene.FadePanel.color.a == 0)
                     {
-                        tmpScene.SceneState &= ~ tmpScene.SceneState;
+                        // ビットをすべておりリザルトのみ立て直す
+                        tmpScene.SceneState &= ~tmpScene.SceneState;
                         tmpScene.SceneState |= Const.SCENE_RESULT;
                         Fadeout();
                     }
-
                     fadein();
                     break;
                 default:
                     break;
-
             }
         }
 
@@ -108,25 +114,21 @@ namespace SceneMove
                 // フラグを折って次のステートを入れる
                 tmpScene.SceneState &= ~tmpScene.SceneState;
                 tmpScene.SceneState |= Const.SCENE_TITLE;
-                
             }
             else 
             {
                 // 音を止める
-                InGameSceneController.AudioInstance.audioSource.Stop();
-                InGameSceneController.AudioInstance.PlayerAoudio.Stop();
+                BaseAudio.audioSource.Stop();
+                BaseAudio.PlayerAoudio.Stop();
                 SceneManager.LoadScene("ResultScene");
                 // メインステートフラグのみ折って次のステートを入れる
                 tmpScene.SceneState &= ~Const.SCENE_MAIN;
                 tmpScene.SceneState |= Const.SCENE_RESULT;
             }
             
+            // 初期化処理
             tmpScene.FadeinTween = null;
             tmpScene.FadeoutTween = null;
-            
-
-            //ゲームオーバーBGM
-            //InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.GameOverCloseDore);
         }
     }
     
