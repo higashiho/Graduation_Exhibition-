@@ -32,7 +32,8 @@ namespace Player
             {
                 // 移動挙動
                 case PlayerState.MOVE:
-                    movePlayer.Move();
+                    if(OnGrount)
+                        movePlayer.Move();
                     break;
                 // ジャンプ挙動
                 case PlayerState.JUMP:

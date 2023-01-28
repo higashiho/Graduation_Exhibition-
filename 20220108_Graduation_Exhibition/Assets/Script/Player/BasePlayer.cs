@@ -29,6 +29,7 @@ namespace Player
         protected PlayerState playerStatus = PlayerState.DEFAULT;
         public PlayerState PlayerStatus{get{return playerStatus;}set {playerStatus = value;}}
         // 地面と接地しているか
+        [SerializeField]
         protected bool onGround;
         public bool OnGrount{get{return onGround;} set{onGround = value;}}
         

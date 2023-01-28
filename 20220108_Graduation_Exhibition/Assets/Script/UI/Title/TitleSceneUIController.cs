@@ -47,7 +47,7 @@ namespace UI
             StartPlayPos = MoveImage.transform.localPosition;
             titleMove = new TitleMove(this);
             diamondMove = new DiamondMove(this);
-            titleMove.StartMove();
+            titleMove.StartMoveAsync();
         }
 
         void Update()

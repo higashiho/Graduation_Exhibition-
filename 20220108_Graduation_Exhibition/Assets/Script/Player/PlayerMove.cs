@@ -53,7 +53,7 @@ namespace Player
             if(tmpPlayer.OnGrount)
             {
                 tmpPlayer.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, tmpPlayer.DataPlayer.PlayerJumpPower, 0));
-
+                
                 // ステート初期化
                 tmpPlayer.PlayerStatus = BasePlayer.PlayerState.DEFAULT;
             }

@@ -22,6 +22,9 @@ namespace SceneMove
         /// </summary>
         public void Move()
         {
+            if(Input.GetKeyDown(KeyCode.Escape))
+                Application.Quit();
+
             switch(tmpScene.SceneState)
             {
                 case Const.SCENE_TITLE:
