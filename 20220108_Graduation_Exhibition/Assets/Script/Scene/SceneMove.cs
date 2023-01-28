@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
-
 namespace SceneMove
 {
     /// <summary>
@@ -117,6 +116,9 @@ namespace SceneMove
             
             tmpScene.FadeinTween = null;
             tmpScene.FadeoutTween = null;
+            //ゲームオーバーBGM
+            InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.GameOverBGM);
+            //InGameSceneController.AudioInstance.audioSource.PlayOneShot(InGameSceneController.AudioInstance.GameOverCloseDore);
         }
     }
     
