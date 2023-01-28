@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace UI
 {
@@ -15,6 +16,12 @@ namespace UI
         // Update is called once per frame
         void Update()
         {
+        }
+        
+        void OnDestroy()
+        {
+            
+            DOTween.KillAll();
         }
     }
 }
