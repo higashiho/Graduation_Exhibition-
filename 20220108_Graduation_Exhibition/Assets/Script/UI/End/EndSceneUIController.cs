@@ -18,6 +18,7 @@ namespace UI{
         void OnDestroy()
         {
             DOTween.KillAll();
+            BaseUI.HaveItem = default;
         }
     }
 }

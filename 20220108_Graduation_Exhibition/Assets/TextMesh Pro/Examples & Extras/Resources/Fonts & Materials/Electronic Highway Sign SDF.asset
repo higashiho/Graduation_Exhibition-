@@ -202,9 +202,11 @@ MonoBehaviour:
     packingMode: 4
     atlasWidth: 1024
     atlasHeight: 1024
-    characterSetSelectionMode: 6
-    characterSequence: 
-    referencedFontAssetGUID: 8f586378b4e144a9851e7b34d9b748ee
+    characterSetSelectionMode: 7
+    characterSequence: " :ADW_aceprsA \nD\u30AD\u30FC\t\t: \u79FB\u52D5\nspace\t\t:
+      \u30B8\u30E3\u30F3\u30D7\n\u5DE6\u30AF\u30EA\u30C3\u30AF\t: \u30B3\u30A6\u30AB\u30F3\u30DC\u30FC\u30EB\u751F\u6210\nWarp\u4E0A\u3067W\u30AD\u30FC\t:
+      Warp\u8D77\u52D5_"
+    referencedFontAssetGUID: dc36b3fdc14f47ebb36fd484a67e268a
     referencedTextAssetGUID: 
     fontStyle: 0
     fontStyleModifier: 0

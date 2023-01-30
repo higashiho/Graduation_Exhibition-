@@ -57,7 +57,7 @@ namespace UI
         public Text ItemsUI{get {return itemsUI;}}
 
         // アイテムの取得数
-        protected static int haveItems;
+        protected static int haveItems = 0;
         public static int HaveItem      // 静的変数な為どこで代入されたかわかりやすいように代入された場合はLogを出す
         {get{return haveItems;}set{Debug.Log("haveItem++");haveItems = value;}}
 
