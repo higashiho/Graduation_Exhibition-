@@ -9,6 +9,7 @@ namespace Audio
         // Start is called before the first frame update
         void Start()
         {
+            // 複数生成されるのを避ける
             if(audioSource != null)
             {
                 Destroy(this.gameObject);
