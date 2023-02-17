@@ -23,6 +23,7 @@ namespace Player
 
             if(Input.GetKey(KeyCode.A) ||Input.GetKey(KeyCode.LeftArrow))
             {
+                // 重複して鳴るのを避ける
                 if(!BaseAudio.PlayerAoudio.isPlaying)
                     BaseAudio.PlayerAoudio.PlayOneShot(InGameSceneController.AudioInstance.MovePlayer);
                 pos.x -= tmpPlayer.DataPlayer.PlayerSpeed * Time.deltaTime;
@@ -30,6 +31,7 @@ namespace Player
             }
             else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
+                // 重複して鳴るのを避ける
                 if(!BaseAudio.PlayerAoudio.isPlaying)
                     BaseAudio.PlayerAoudio.PlayOneShot(InGameSceneController.AudioInstance.MovePlayer);
                 pos.x += tmpPlayer.DataPlayer.PlayerSpeed * Time.deltaTime;

@@ -14,7 +14,6 @@ namespace Player
                     if(tmpPlayer.PlayerMoveFlags == BasePlayer.PlayerMoveFlag.LEFT)
                     {
                         tmpPlayer.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = tmpPlayer.LeftPlayer;
-                        
                     }
                     else if(tmpPlayer.PlayerMoveFlags == BasePlayer.PlayerMoveFlag.RIGHT)
                     {
